@@ -10,78 +10,67 @@ body {
 .hidden {
   display: none;
 }
+
+#container {
+  display: block;
+  width: 100%;
+  height: 100dvh;
+  background: #000;
+  background: url('assets/ahri__hero-background.jpg') no-repeat center;
+  object-fit: cover;
+  background-attachment: fixed;
+}
+.header {
+  width: 100%;
+  height: 50px;
+  background: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header .riot-logo img{
+  width: 85px;
+} 
 #navbar {
-  width: auto;
-  height: 160px;
-  background: url("assets/Logo.png") no-repeat center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(180deg, #0A323C, #0A1428);
   position: sticky;
+}
+#navbar .list-navbar {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  justify-content: space-around;
 }
-#navbar .nav__form {
-  position: absolute;
-  display: flex;
-  top: -4px;
-  right: 210px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 1rem;
-  margin-top: 0.6rem;
-}
-#navbar .nav__form input {
-    width: 120px;
-    background-color: #000;
-}
-#navbar .nav__form .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-  background: #000000;
-  color: rgb(134, 93, 60);
-}
-#nav__form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-#navbar .nav__list ul {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  top: 65px;
-  right: 235px;
-}
-li,
-a {
-  list-style: none;
+li, a {
   text-decoration: none;
-}
-#navbar .nav__list ul li {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  width: 86px;
-  font-size: 14px;
-  padding: 0 4px;
-  height: 54px;
-  text-align: center;
-  background: url("assets/nav-list.jpg") -96px 0 no-repeat;
-  cursor: pointer;
-}
-#navbar .nav__list ul li:hover {
-    opacity: .75;
-}
-#navbar .nav__list ul li a {
+  list-style: none;
   color: #fff;
+}
+#navbar .list-navbar li {
+  margin: 0 1.5rem;
+  border-bottom: none;
+}
+#navbar .list-navbar li:hover {
+  border-bottom: 1px solid #fff;
+  opacity: .6;
+  transition: all .3s;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  width: 85px;
+}
+
+
+/* Hero section */
+.hero {
+  width: 100%;
+  height: 90%;
 }
