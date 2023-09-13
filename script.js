@@ -19,3 +19,20 @@ searchButton.addEventListener('click', function() {
     }
     
 })
+
+// seccion de juego
+const TIENDA = document.querySelector('.tienda');
+const CASA = document.querySelector('.casa');
+const BATALLA = document.querySelector('.battle');
+
+TIENDA.addEventListener('click', () => {
+    console.log('tienda');
+})
+
+CASA.addEventListener('click', () => {
+    console.log('casa');
+})
+
+BATALLA.addEventListener('click', () => {
+    console.log('batalla');
+})

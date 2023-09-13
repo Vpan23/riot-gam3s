@@ -159,6 +159,51 @@ li, a {
 #inicio {
   background: #0A1428;
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+#playBground {
+  margin: 5rem;
+}
+.map {
+  max-width: 800px;
+  height: 520px;
+  background-color: #000;
+  position: relative;
+}
+.map img {
+  width: 100%;
+}
+.opt {
+  position: absolute;
+}
+.map .title {
+  color: #fff;
+  font-size: 43px;
+  right: 40%;
+  top: 5%;
+  
+}
+.tienda {
+  width: 170px;
+  height: 170px;
+  right: 50%;
+  top: 150px;
+}
+.casa {
+  width: 120px;
+  height: 120px;
+  left: 5%;
+  bottom: 10%;
+}
+.battle {
+  width: 240px;
+  height: 240px;
+  right: 50px;
+  bottom: 100px;
+}
+.button-opt:hover {
+  cursor: pointer;
+  transition: .3s;
+  opacity: .65;
 }
