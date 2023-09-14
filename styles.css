@@ -44,6 +44,7 @@ body {
 }
 .header .riot-logo img{
   width: 85px;
+  color: #fff;
 } 
 .header button {
   width: 150px;
@@ -164,6 +165,7 @@ li, a {
 }
 #playBground {
   margin: 5rem;
+  position: relative;
 }
 .map {
   max-width: 800px;
@@ -176,6 +178,7 @@ li, a {
 }
 .opt {
   position: absolute;
+  color: #fff;
 }
 .map .title {
   color: #fff;
@@ -206,4 +209,77 @@ li, a {
   cursor: pointer;
   transition: .3s;
   opacity: .65;
+}
+.title-opt {
+  color: #fff;
+}
+.casa-text {
+  bottom: 180px;
+  left: 75px;
+}
+.tienda-text{
+  right: 55%;
+  top: 100px;
+  color: #b71818;
+}
+.batalla-text{
+  bottom: 65%;
+  right: 140px;
+  font-size: 38px;
+  color: #f2ff00;
+}
+.barraDeCarga {
+  width: 100%;
+  height: 100%;
+  background: aliceblue;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  opacity: .6;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.cargando {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+}
+.alcancia {
+  position: absolute;
+  width: 140px;
+  height: 35px;
+  background-color: #6b8288;
+  top: 10px;
+  left: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .25rem;
+}
+#monedas {
+  text-align: end;
+  font-weight: 500;
+  font-size: 24px;
+  color: #000;
+}
+.tiendaDisplay {
+  width: 100%;
+  height: 100%;
+  background: rgb(78, 80, 82);
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.bienvenido {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  color: #fff;
 }

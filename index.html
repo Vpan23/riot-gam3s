@@ -13,14 +13,13 @@
   </head>
   <body>
     <main id="container">
-      
       <header class="header">
         <div class="riot-logo">
           <img src="assets/riotgames-logo.png" alt="" />
         </div>
         <div class="buttons-form">
           <span id="search" class="material-symbols-outlined"> search </span>
-          <input type="search" class="search-text">
+          <input type="search" class="search-text" />
           <span id="language" class="material-symbols-outlined">
             language
           </span>
@@ -32,46 +31,61 @@
       <section class="hero"></section>
 
       <section class="inicio section" id="inicio">
-      <nav id="navbar">
-        <div class="logo">
-          <a href="#inicio"><img src="assets/Logo.png" alt="" /> </a>
-        </div>
-        <ul class="list-navbar">
-          <li><a href="#inicio">Jugar</a></li>
-          <li><a href="#">Tienda</a></li>
-          <li><a href="#">Campeones</a></li>
-          <li><a href="#">Modalidad de Juego</a></li>
-          <li><a href="#">Configuración</a></li>
-        </ul>
-      </nav>
+        <nav id="navbar">
+          <div class="logo">
+            <a href="#inicio"><img src="assets/Logo.png" alt="" /> </a>
+          </div>
+          <ul class="list-navbar">
+            <li><a href="#inicio">Jugar</a></li>
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Campeones</a></li>
+            <li><a href="#">Modalidad de Juego</a></li>
+            <li><a href="#">Configuración</a></li>
+          </ul>
+        </nav>
 
-      <section class="play" id="playBground">
-        <div class="map">
-          <div class="title opt">
-            <h1>INICIO</h1>
+        <section class="play" id="playBground">
+          <div class="map">
+            <div class="title opt">
+              <h1>INICIO</h1>
+            </div>
+            <h2 class="casa-text opt">Casa</h2>
+            <h2 class="tienda-text opt">Tienda</h2>
+            <h2 class="batalla-text opt">Batalla</h2>
+            <div class="tienda opt">
+              <span class="button-opt">
+                <img src="assets/Shop.png" alt="" />
+              </span>
+            </div>
+            <div class="casa opt">
+              <span class="button-opt">
+                <img src="assets/Casa.png" alt="" />
+              </span>
+            </div>
+            <div class="battle opt">
+              <span class="button-opt">
+                <img src="assets/Battle.png" alt="" />
+              </span>
+            </div>
           </div>
-          <h2>Casa</h2>
-          <h2>Tienda</h2>
-          <h2>Batalla</h2>
-          <div class="tienda opt">
-            <span class="button-opt">
-              <img src="assets/Shop.png" alt="">
-            </span>
-          </div>
-          <div class="casa opt">
-            <span class="button-opt">
-              <img src="assets/Casa.png" alt="">
-            </span>
-          </div>
-          <div class="battle opt">
-            <span class="button-opt">
-              <img src="assets/Battle.png" alt="">
-            </span>
-          </div>
-        </div>
-      </section>
 
+          <div class="barraDeCarga">
+            <span class="cargando"></span>
+          </div>
+          <span class="alcancia">
+            <span class="material-symbols-outlined">
+              monetization_on
+              </span>
+              <span id="monedas"></span>
+          </span>
+          
 
+          <!-- Sesion para Tienda -->
+          <div class="tiendaDisplay">
+            <span class="bienvenido"></span>
+            
+          </div>
+        </section>
       </section>
     </main>
 
