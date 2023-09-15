@@ -17,11 +17,24 @@ searchButton.addEventListener("click", function () {
     searchText.style.display = "none";
   }
 });
-
 // seccion de juego
 const TIENDA = document.querySelector(".tienda");
 const CASA = document.querySelector(".casa");
 const BATALLA = document.querySelector(".battle");
+
+const BarraDeCarga = document.querySelector(".barraDeCarga");
+const cargandoText = document.querySelector(".cargando");
+const monedasTextDisplay = document.getElementById('monedas');
+const monedasTienda = document.getElementById('monedasTienda');
+
+const tiendaDisplay = document.querySelector('.tiendaDisplay');
+const goBack = document.querySelector('.goBack');
+let cards = document.querySelector('.cards');
+
+const bienvenidoDisplay = document.querySelector('.bienvenido');
+const bienvenidoTextDisplay = document.querySelector('.center-mid');
+
+var monedas = 100; 
 
 TIENDA.addEventListener("click", () => {
   console.log("tienda");
@@ -39,13 +52,6 @@ BATALLA.addEventListener("click", () => {
   console.log("batalla");
 });
 
-const BarraDeCarga = document.querySelector(".barraDeCarga");
-const cargandoText = document.querySelector(".cargando");
-const monedasTextDisplay = document.getElementById('monedas');
-
-let monedas = 0; 
-monedasTextDisplay.innerHTML = monedas;
-
 // Barra de carga con Setinterval.
 function barraDeCarga() {
   // Esta barra mostrar una enfrente de la pantalla de juego una barra que se estara cargando.
@@ -61,18 +67,32 @@ function barraDeCarga() {
       }, 4000);
 }
 
+// Ir de regreso al menu.
+goBack.addEventListener('click', () => {
+  tiendaDisplay.style.display = 'none';
+})
 // Activador de la Funcion de Tienda.
-const tiendaDisplay = document.querySelector('.tiendaDisplay');
 function tienda() {
-    tiendaDisplay.style.display = 'flex';
-    bienvenido();
+  
+  bienvenido(); 
+   
+   setTimeout(() => {
     
+   }, 1200);
+   
+   tiendaDisplay.style.display = 'flex';
+   monedero();
 }
-
-const bienvenidoTextDisplay = document.querySelector('.bienvenido');
+// Dar la bienvenida al entrar a la tienda.
 function bienvenido() {
+  bienvenidoDisplay.style.display = 'flex';
     bienvenidoTextDisplay.innerHTML = 'Has entrado a la Tienda';
     setTimeout(() => {
-        bienvenidoTextDisplay.innerHTML = ''
+        bienvenidoTextDisplay.innerHTML = '';
+        bienvenidoDisplay.style.display = 'none';
     }, 1200);
+} 
+// Funcion para guardar, actualizar y mostrar las monedas que tengas actualmente.
+function monedero() { 
+  monedasTextDisplay.innerHTML = monedas;
 }
