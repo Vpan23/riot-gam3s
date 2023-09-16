@@ -274,6 +274,8 @@ li, a {
   top: 0;
   display: none;
   padding: 2rem;
+  justify-content: start;
+  align-items: center;
 }
 .bienvenido {
   color: #fff;
