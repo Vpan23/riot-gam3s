@@ -52,9 +52,7 @@ TIENDA.addEventListener("click", () => {
   }, 4000);
 });
 
-CASA.addEventListener("click", () => {
-  console.log("casa");
-});
+
 
 BATALLA.addEventListener("click", () => {
   console.log("batalla");
@@ -107,19 +105,24 @@ buttonToBuy.forEach(function (boton) {
     console.log(getButtonId);
     switch(getButtonId) {
       case "lux": costoPersonaje = 100; break;
-      case "ashe": costoPersonaje = 120; break;
+      case "ashe": costoPersonaje = 150; break;
+      case "miss": costoPersonaje = 250; break;
     }
 // descontado al comprar un personaje.
     if(monedas >= costoPersonaje) {
       monedas -= costoPersonaje;
       monedasTextDisplay.innerHTML = monedas;
       monedasTienda.innerHTML = monedas;
-      console.log(monedas)
+      console.log(monedas);
       console.log('se ha comprado exitosamente!');
     }else {
       console.log('se ha rechazado la compra!');
     }
-
-
   });
+});
+
+
+// Funcion al Tocar Casa.
+CASA.addEventListener("click", () => {
+  console.log("casa");
 });

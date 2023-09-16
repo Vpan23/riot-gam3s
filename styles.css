@@ -355,3 +355,41 @@ button {
 .tiendaDisplay .alcancia {
   position: block;
 }
+.maintain-services {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #playBground {
+    display: none;
+  }
+  #navbar .list-navbar {
+    display: none;
+  }
+  #inicio {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .login, #search, #language {
+    display: none;
+  }
+  .maintain-services {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    width: 80%;
+    height: 520px;
+    background-color: #ffffff9d;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .maintain-services .main-title span, h2 {
+    font-size: 48px;
+  }
+}
