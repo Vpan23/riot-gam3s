@@ -18,7 +18,6 @@ searchButton.addEventListener("click", function () {
   }
 });
 
-
 // seccion de juego
 const TIENDA = document.querySelector(".tienda");
 const CASA = document.querySelector(".casa");
@@ -39,6 +38,7 @@ const bienvenidoTextDisplay = document.querySelector(".center-mid");
 const buttonToBuy = document.querySelectorAll(".toBuy");
 var monedas = 100;
 let costoPersonaje;
+let obtenerNumeroDePersonaje;
 
 // toBuy.addEventListener('click', ()=> {
 //   console.log('funciona')
@@ -51,8 +51,6 @@ TIENDA.addEventListener("click", () => {
     tienda();
   }, 4000);
 });
-
-
 
 BATALLA.addEventListener("click", () => {
   console.log("batalla");
@@ -98,31 +96,95 @@ function bienvenido() {
 function monedero() {
   monedasTextDisplay.innerHTML = monedas;
 }
+let personajes = [
+  {
+    nombre: "lux",
+    atributos: {
+      vida: 100,
+      "poder de habilidad": 100,
+      defensa: 30,
+      "resistencia magica": 30,
+      ataque: 10,
+    },
+    numero: 1,
+    coste: 100,
+    estado: false,
+  },
+  {
+    nombre: "ashe",
+    atributos: {
+      vida: 120,
+      "poder de habilidad": 20,
+      defensa: 30,
+      "resistencia magica": 30,
+      ataque: 70,
+    },
+    numero: 2,
+    coste: 150,
+    estado: false,
+  },
+  {
+    nombre: "miss",
+    atributos: {
+      vida: 150,
+      "poder de habilidad": 50,
+      defensa: 50,
+      "resistencia magica": 50,
+      ataque: 50,
+    },
+    numero: 3,
+    coste: 250,
+    estado: false,
+  },
+];
+
 // Funcion de compra de personajes.
 buttonToBuy.forEach(function (boton) {
   boton.addEventListener("click", function () {
     var getButtonId = boton.id;
     console.log(getButtonId);
-    switch(getButtonId) {
-      case "lux": costoPersonaje = 100; break;
-      case "ashe": costoPersonaje = 150; break;
-      case "miss": costoPersonaje = 250; break;
+    switch (getButtonId) {
+      case "lux":
+        costoPersonaje = personajes[0].coste;
+        obtenerNumeroDePersonaje = personajes[0].numero;
+        console.log(obtenerNumeroDePersonaje);
+        break;
+      case "ashe":
+        costoPersonaje = personajes[1].coste;
+        obtenerNumeroDePersonaje = personajes[1].numero;
+        console.log(obtenerNumeroDePersonaje);
+        break;
+      case "miss":
+        costoPersonaje = personajes[2].coste;
+        obtenerNumeroDePersonaje = personajes[2].numero;
+        console.log(obtenerNumeroDePersonaje);
+        break;
     }
-// descontado al comprar un personaje.
-    if(monedas >= costoPersonaje) {
-      monedas -= costoPersonaje;
-      monedasTextDisplay.innerHTML = monedas;
-      monedasTienda.innerHTML = monedas;
-      console.log(monedas);
-      console.log('se ha comprado exitosamente!');
-    }else {
-      console.log('se ha rechazado la compra!');
+    if (personajes[obtenerNumeroDePersonaje - 1].estado == false) {
+      // descontado al comprar un personaje.
+      if (monedas >= costoPersonaje) {
+        monedas -= costoPersonaje;
+        monedasTextDisplay.innerHTML = monedas;
+        monedasTienda.innerHTML = monedas;
+        console.log(monedas);
+        console.log("se ha comprado exitosamente!");
+
+        // Marcara al personaje como ya comprado. La resta del uno es para evitar modificaciones en los numeros y que asi puedan ser contadas facilmente.
+        personajes[obtenerNumeroDePersonaje - 1].estado = true;
+        console.log(personajes[0].estado);
+      } else {
+        console.log("se ha rechazado la compra!");
+      }
+    } else {
+      console.log("este personaje ya ha sido comprado!");
     }
   });
 });
 
+const mostrarCasa = document.getElementById('sectionCasa');
 
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
+  mostrarCasa.style.display = 'flex';
 });
