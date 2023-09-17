@@ -19,6 +19,8 @@ searchButton.addEventListener("click", function () {
 });
 
 // seccion de juego
+const PRINCIPAL = document.querySelector('.map');
+
 const TIENDA = document.querySelector(".tienda");
 const CASA = document.querySelector(".casa");
 const BATALLA = document.querySelector(".battle");
@@ -30,6 +32,7 @@ const monedasTienda = document.getElementById("monedasTienda");
 
 const tiendaDisplay = document.querySelector(".tiendaDisplay");
 const goBack = document.querySelector(".goBack");
+const goBackCasa = document.querySelector(".goBack-casa");
 let cards = document.querySelector(".cards");
 
 const bienvenidoDisplay = document.querySelector(".bienvenido");
@@ -75,6 +78,11 @@ function barraDeCarga() {
 goBack.addEventListener("click", () => {
   tiendaDisplay.style.display = "none";
 });
+goBackCasa.addEventListener("click", () => {
+  mostrarCasa.style.display = "none";
+  PRINCIPAL.style.display = "flex";
+});
+
 // Activador de la Funcion de Tienda.
 function tienda() {
   bienvenido();
@@ -96,47 +104,7 @@ function bienvenido() {
 function monedero() {
   monedasTextDisplay.innerHTML = monedas;
 }
-let personajes = [
-  {
-    nombre: "lux",
-    atributos: {
-      vida: 100,
-      "poder de habilidad": 100,
-      defensa: 30,
-      "resistencia magica": 30,
-      ataque: 10,
-    },
-    numero: 1,
-    coste: 100,
-    estado: false,
-  },
-  {
-    nombre: "ashe",
-    atributos: {
-      vida: 120,
-      "poder de habilidad": 20,
-      defensa: 30,
-      "resistencia magica": 30,
-      ataque: 70,
-    },
-    numero: 2,
-    coste: 150,
-    estado: false,
-  },
-  {
-    nombre: "miss",
-    atributos: {
-      vida: 150,
-      "poder de habilidad": 50,
-      defensa: 50,
-      "resistencia magica": 50,
-      ataque: 50,
-    },
-    numero: 3,
-    coste: 250,
-    estado: false,
-  },
-];
+
 
 // Funcion de compra de personajes.
 buttonToBuy.forEach(function (boton) {
@@ -182,9 +150,103 @@ buttonToBuy.forEach(function (boton) {
 });
 
 const mostrarCasa = document.getElementById('sectionCasa');
+const contenedorDeCartas = document.querySelector('.cards__container');
+const crearCarta = document.createElement('div');
+const nombreCarta = document.createElement('span');
+const atributosCarta = document.createElement('div');
+const atributosContenedorCarta = document.createElement('div');
+const poderCarta = document.createElement('div');
+const imgCarta = document.createElement('img');
+
+let personajes = [
+  {
+    nombre: "lux",
+    atributos: {
+      vida: 100,
+      "poder de habilidad": 100,
+      defensa: 30,
+      "resistencia magica": 30,
+      ataque: 10,
+    },
+    numero: 1,
+    coste: 100,
+    estado: false,
+    img: 'assets/lux.png'
+  },
+  {
+    nombre: "ashe",
+    atributos: {
+      vida: 120,
+      "poder de habilidad": 20,
+      defensa: 30,
+      "resistencia magica": 30,
+      ataque: 70,
+    },
+    numero: 2,
+    coste: 150,
+    estado: false,
+    img: 'assets/ashe.png'
+  },
+  {
+    nombre: "miss",
+    atributos: {
+      vida: 150,
+      "poder de habilidad": 50,
+      defensa: 50,
+      "resistencia magica": 50,
+      ataque: 50,
+    },
+    numero: 3,
+    coste: 250,
+    estado: false,
+    img: 'assets/assets/missfortune.png'
+  },
+];
+
 
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
+  PRINCIPAL.style.display = 'none';
   mostrarCasa.style.display = 'flex';
+  // Calcular que personajes tienen su estado activo(true).
+  for(let i=0; i<personajes.length; i++){
+    if(personajes[i].estado === true){
+          /*  
+        EL ORDEN ES EL SIGUIENTE
+        - NOMBRE. 
+        - IMG.
+        - ATRIBUTOS
+        - BOTON.
+      */
+      console.log(`personaje ${personajes[i].nombre} ha pasado`);
+
+      // Se crea la carta
+      crearCarta.className = 'carta-personaje';
+
+      // Creacion de Nombres de Cartas.
+      nombreCarta.textContent = `${personajes[i].nombre}`;
+      nombreCarta.className = 'nombreCarta';
+
+      // Creacion de la imagen.
+      imgCarta.className = 'imgCarta';
+      imgCarta.src = `${personajes[i].img}`;
+      
+      // Creacion de los atributos.
+      atributosCarta.className = 'atributosCarta';
+      atributosContenedorCarta.className = 'atributosContenedorCarta';
+      atributosCarta.textContent = `pw ${personajes[i].atributos["poder de habilidad"]}`;
+
+
+      // Subirlo en nuestro contenedor.
+      contenedorDeCartas.appendChild(crearCarta);
+      crearCarta.appendChild(nombreCarta);
+      crearCarta.appendChild(imgCarta);
+      crearCarta.appendChild(atributosContenedorCarta);
+      atributosContenedorCarta.appendChild(atributosCarta);
+
+    } else {
+      console.log(`personaje ${personajes[i].nombre} no ha pasado`);
+    }
+  }
 });
