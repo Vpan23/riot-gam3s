@@ -19,7 +19,7 @@ searchButton.addEventListener("click", function () {
 });
 
 // seccion de juego
-const PRINCIPAL = document.querySelector('.map');
+const PRINCIPAL = document.querySelector(".map");
 
 const TIENDA = document.querySelector(".tienda");
 const CASA = document.querySelector(".casa");
@@ -105,7 +105,6 @@ function monedero() {
   monedasTextDisplay.innerHTML = monedas;
 }
 
-
 // Funcion de compra de personajes.
 buttonToBuy.forEach(function (boton) {
   boton.addEventListener("click", function () {
@@ -149,29 +148,30 @@ buttonToBuy.forEach(function (boton) {
   });
 });
 
-const mostrarCasa = document.getElementById('sectionCasa');
-const contenedorDeCartas = document.querySelector('.cards__container');
-const crearCarta = document.createElement('div');
-const nombreCarta = document.createElement('span');
-const atributosCarta = document.createElement('div');
-const atributosContenedorCarta = document.createElement('div');
-const poderCarta = document.createElement('div');
-const imgCarta = document.createElement('img');
+const mostrarCasa = document.getElementById("sectionCasa");
+const contenedorDeCartas = document.querySelector(".cards__container");
+const crearCarta = document.createElement("div");
+const nombreCarta = document.createElement("span");
+const atributosIconos = document.createElement("img");
+const atributosContenedorCarta = document.createElement("div");
+const poderCarta = document.createElement("div");
+const imgCarta = document.createElement("img");
 
 let personajes = [
   {
     nombre: "lux",
-    atributos: {
-      vida: 100,
-      "poder de habilidad": 100,
-      defensa: 30,
-      "resistencia magica": 30,
-      ataque: 10,
-    },
+    atributos: [
+      100, 100, 30, 30, 10,
+      // vida: 100,
+      // "poder de habilidad": 100,
+      // defensa: 30,
+      // "resistencia magica": 30,
+      // ataque: 10,
+    ],
     numero: 1,
     coste: 100,
     estado: false,
-    img: 'assets/lux.png'
+    img: "assets/lux.png",
   },
   {
     nombre: "ashe",
@@ -185,7 +185,7 @@ let personajes = [
     numero: 2,
     coste: 150,
     estado: false,
-    img: 'assets/ashe.png'
+    img: "assets/ashe.png",
   },
   {
     nombre: "miss",
@@ -199,20 +199,29 @@ let personajes = [
     numero: 3,
     coste: 250,
     estado: false,
-    img: 'assets/assets/missfortune.png'
+    img: "assets/missfortune.png",
   },
 ];
 
+// iconos de Atributos.
+const AgregarIconosDelAtributo = [
+  "assets/vida-icon.jpg",
+  "assets/ataque-icon.jpg",
+  "assets/poder-de-habilidad-icon.jpg",
+  "assets/defensa-icon.jpg",
+  "assets/resistencia-magica-icon.jpg",
+];
+const contenedorDeAtributos = document.createElement("p");
 
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
-  PRINCIPAL.style.display = 'none';
-  mostrarCasa.style.display = 'flex';
+  PRINCIPAL.style.display = "none";
+  mostrarCasa.style.display = "flex";
   // Calcular que personajes tienen su estado activo(true).
-  for(let i=0; i<personajes.length; i++){
-    if(personajes[i].estado === true){
-          /*  
+  for (let i = 0; i < personajes.length; i++) {
+    if (personajes[i].estado === true) {
+      /*  
         EL ORDEN ES EL SIGUIENTE
         - NOMBRE. 
         - IMG.
@@ -222,29 +231,48 @@ CASA.addEventListener("click", () => {
       console.log(`personaje ${personajes[i].nombre} ha pasado`);
 
       // Se crea la carta
-      crearCarta.className = 'carta-personaje';
+      crearCarta.className = "carta-personaje";
 
       // Creacion de Nombres de Cartas.
       nombreCarta.textContent = `${personajes[i].nombre}`;
-      nombreCarta.className = 'nombreCarta';
+      nombreCarta.className = "nombreCarta";
 
       // Creacion de la imagen.
-      imgCarta.className = 'imgCarta';
+      imgCarta.className = "imgCarta";
       imgCarta.src = `${personajes[i].img}`;
-      
-      // Creacion de los atributos.
-      atributosCarta.className = 'atributosCarta';
-      atributosContenedorCarta.className = 'atributosContenedorCarta';
-      atributosCarta.textContent = `pw ${personajes[i].atributos["poder de habilidad"]}`;
 
+      // Creacion de los atributos.
+      atributosIconos.className = "atributosIconos";
+      atributosContenedorCarta.className = "atributosContenedorCarta";
+      contenedorDeAtributos.className = "contenedorDeAtributos";
 
       // Subirlo en nuestro contenedor.
       contenedorDeCartas.appendChild(crearCarta);
       crearCarta.appendChild(nombreCarta);
       crearCarta.appendChild(imgCarta);
-      crearCarta.appendChild(atributosContenedorCarta);
-      atributosContenedorCarta.appendChild(atributosCarta);
 
+      // Prueba
+      
+      atributosIconos.src = AgregarIconosDelAtributo[0];
+      contenedorDeAtributos.textContent = `vida`;
+      atributosContenedorCarta.appendChild(atributosIconos);
+      atributosContenedorCarta.appendChild(contenedorDeAtributos);
+      crearCarta.appendChild(atributosContenedorCarta);
+
+      atributosIconos.src = AgregarIconosDelAtributo[1];
+      contenedorDeAtributos.textContent = `velocidad`;
+      atributosContenedorCarta.appendChild(atributosIconos);
+      atributosContenedorCarta.appendChild(contenedorDeAtributos);
+      crearCarta.appendChild(atributosContenedorCarta);
+      // for (let i = 0; i < AgregarIconosDelAtributo.length; i++) {
+      //   let imagen = (atributosIconos.src = AgregarIconosDelAtributo[i]);
+      //   console.log("funciona " + AgregarIconosDelAtributo[i]);
+
+      //   contenedorDeAtributos.textContent = `funciona bien`;
+      //   crearCarta.appendChild(atributosContenedorCarta);
+      //   atributosContenedorCarta.appendChild(imagen);
+      //   atributosContenedorCarta.appendChild(contenedorDeAtributos);
+      // }
     } else {
       console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
