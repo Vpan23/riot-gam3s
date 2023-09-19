@@ -148,61 +148,24 @@ buttonToBuy.forEach(function (boton) {
   });
 });
 
+// Funcion para Casa.
 const mostrarCasa = document.getElementById("sectionCasa");
 const contenedorDeCartas = document.querySelector(".cards__container");
-const crearCarta = document.createElement("div");
 const nombreCarta = document.createElement("span");
-const atributosIconos = document.createElement("img");
-const atributosContenedorCarta = document.createElement("div");
 const poderCarta = document.createElement("div");
 const imgCarta = document.createElement("img");
 
-let personajes = [
-  {
-    nombre: "lux",
-    atributos: [
-      100, 100, 30, 30, 10,
-      // vida: 100,
-      // "poder de habilidad": 100,
-      // defensa: 30,
-      // "resistencia magica": 30,
-      // ataque: 10,
-    ],
-    numero: 1,
-    coste: 100,
-    estado: false,
-    img: "assets/lux.png",
-  },
-  {
-    nombre: "ashe",
-    atributos: {
-      vida: 120,
-      "poder de habilidad": 20,
-      defensa: 30,
-      "resistencia magica": 30,
-      ataque: 70,
-    },
-    numero: 2,
-    coste: 150,
-    estado: false,
-    img: "assets/ashe.png",
-  },
-  {
-    nombre: "miss",
-    atributos: {
-      vida: 150,
-      "poder de habilidad": 50,
-      defensa: 50,
-      "resistencia magica": 50,
-      ataque: 50,
-    },
-    numero: 3,
-    coste: 250,
-    estado: false,
-    img: "assets/missfortune.png",
-  },
-];
+// Contenedor de cada imagen de Atributo.
+const atributosContenedorCartaVida = document.createElement("div");
+const atributosContenedorCartaAtaque = document.createElement("div");
+const atributosContenedorCartaDefensa = document.createElement("div");
+const atributosContenedorCartaResistencia = document.createElement("div");
+const atributosContenedorCartaPoder = document.createElement("div");
 
+// Imagenes de cada atributo
+const contenedorDeTodosLosAtributos = document.createElement("div");
+
+contenedorDeTodosLosAtributos.className = "contenedorDeTodosLosAtributos";
 // iconos de Atributos.
 const AgregarIconosDelAtributo = [
   "assets/vida-icon.jpg",
@@ -211,70 +174,86 @@ const AgregarIconosDelAtributo = [
   "assets/defensa-icon.jpg",
   "assets/resistencia-magica-icon.jpg",
 ];
-const contenedorDeAtributos = document.createElement("p");
+
+// Array de personajes
+let personajes = [
+  {
+    nombre: "lux",
+    atributos: [100, 100, 30, 30, 10],
+    numero: 1,
+    coste: 100,
+    estado: true,
+    img: "assets/lux.png",
+  },
+  {
+    nombre: "ashe",
+    atributos: [120, 20, 30, 30, 70],
+    numero: 2,
+    coste: 150,
+    estado: false,
+    img: "assets/ashe.png",
+  },
+  {
+    nombre: "miss",
+    atributos: [150, 50, 50, 50, 50],
+    numero: 3,
+    coste: 250,
+    estado: false,
+    img: "assets/missfortune.png",
+  },
+];
 
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
   PRINCIPAL.style.display = "none";
   mostrarCasa.style.display = "flex";
+
   // Calcular que personajes tienen su estado activo(true).
-  for (let i = 0; i < personajes.length; i++) {
-    if (personajes[i].estado === true) {
-      /*  
-        EL ORDEN ES EL SIGUIENTE
-        - NOMBRE. 
-        - IMG.
-        - ATRIBUTOS
-        - BOTON.
-      */
-      console.log(`personaje ${personajes[i].nombre} ha pasado`);
+  let i;
+  personajes.forEach((personaje) => {
+    // console.log(`personaje ${personajes[i].nombre} ha pasado`);
+    // Verifica si el estado del personaje es true
+    if (personaje.estado) {
+      // Crea un contenedor para el personaje
+      const divPersonaje = document.createElement("div");
+      divPersonaje.className = 'carta-personaje';
 
-      // Se crea la carta
-      crearCarta.className = "carta-personaje";
+      // Agrega el título del personaje
+      const titulo = document.createElement("h2");
+      titulo.textContent = personaje.nombre;
+      titulo.className = 'nombreCarta';
+      divPersonaje.appendChild(titulo);
 
-      // Creacion de Nombres de Cartas.
-      nombreCarta.textContent = `${personajes[i].nombre}`;
-      nombreCarta.className = "nombreCarta";
+      // Agrega la imagen del personaje
+      const imagen = document.createElement("img");
+      imagen.className = 'imgCarta';
+      imagen.src = personaje.img;
+      divPersonaje.appendChild(imagen);
+      let i = 0;
+      // Agrega el texto del personaje
+      const contenedorDeAtributos = document.createElement("div");
+      contenedorDeAtributos.className = 'contenedorDeTodosLosAtributos';
+      // Agregar las imagenes del Atributo.
+      AgregarIconosDelAtributo.forEach((atributos) => {
+        const imagenAtributo = document.createElement("img");
+        const textoAtributo = document.createElement("p");
+        imagenAtributo.src = atributos;
+        imagenAtributo.className = 'atributosIconos';
 
-      // Creacion de la imagen.
-      imgCarta.className = "imgCarta";
-      imgCarta.src = `${personajes[i].img}`;
+        textoAtributo.textContent = `${personaje.atributos[i]}`;
+        textoAtributo.className = 'textoDeAtributo';
+        contenedorDeAtributos.appendChild(imagenAtributo);
+        contenedorDeAtributos.appendChild(textoAtributo);
+        i += 1;
+      });
+      divPersonaje.appendChild(contenedorDeAtributos);
 
-      // Creacion de los atributos.
-      atributosIconos.className = "atributosIconos";
-      atributosContenedorCarta.className = "atributosContenedorCarta";
-      contenedorDeAtributos.className = "contenedorDeAtributos";
-
-      // Subirlo en nuestro contenedor.
-      contenedorDeCartas.appendChild(crearCarta);
-      crearCarta.appendChild(nombreCarta);
-      crearCarta.appendChild(imgCarta);
-
-      // Prueba
-      
-      atributosIconos.src = AgregarIconosDelAtributo[0];
-      contenedorDeAtributos.textContent = `vida`;
-      atributosContenedorCarta.appendChild(atributosIconos);
-      atributosContenedorCarta.appendChild(contenedorDeAtributos);
-      crearCarta.appendChild(atributosContenedorCarta);
-
-      atributosIconos.src = AgregarIconosDelAtributo[1];
-      contenedorDeAtributos.textContent = `velocidad`;
-      atributosContenedorCarta.appendChild(atributosIconos);
-      atributosContenedorCarta.appendChild(contenedorDeAtributos);
-      crearCarta.appendChild(atributosContenedorCarta);
-      // for (let i = 0; i < AgregarIconosDelAtributo.length; i++) {
-      //   let imagen = (atributosIconos.src = AgregarIconosDelAtributo[i]);
-      //   console.log("funciona " + AgregarIconosDelAtributo[i]);
-
-      //   contenedorDeAtributos.textContent = `funciona bien`;
-      //   crearCarta.appendChild(atributosContenedorCarta);
-      //   atributosContenedorCarta.appendChild(imagen);
-      //   atributosContenedorCarta.appendChild(contenedorDeAtributos);
-      // }
+      // Agrega el contenedor del personaje al contenedor principal
+      contenedorDeTodosLosAtributos.appendChild(divPersonaje);
+      contenedorDeCartas.appendChild(contenedorDeTodosLosAtributos);
     } else {
-      console.log(`personaje ${personajes[i].nombre} no ha pasado`);
+      // console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
-  }
+  });
 });

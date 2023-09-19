@@ -412,10 +412,24 @@ button {
   height: 20px;
   border-radius: 50%;
 }
-.contenedorDeAtributos {
+.contenedorDeTodosLosAtributos {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 1px solid #000;
+}
+.contenedorDeAtributos {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  padding: 2px;
+}
+.textoDeAtributo {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
 }
 
 
