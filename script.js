@@ -179,15 +179,15 @@ const AgregarIconosDelAtributo = [
 let personajes = [
   {
     nombre: "lux",
-    atributos: [100, 100, 30, 30, 10],
+    atributos: [100, 20, 30, 30, 10],
     numero: 1,
     coste: 100,
-    estado: true,
+    estado: false,
     img: "assets/lux.png",
   },
   {
     nombre: "ashe",
-    atributos: [120, 20, 30, 30, 70],
+    atributos: [120, 60, 30, 30, 30],
     numero: 2,
     coste: 150,
     estado: false,
@@ -217,37 +217,39 @@ CASA.addEventListener("click", () => {
     if (personaje.estado) {
       // Crea un contenedor para el personaje
       const divPersonaje = document.createElement("div");
-      divPersonaje.className = 'carta-personaje';
+      divPersonaje.className = "carta-personaje";
 
       // Agrega el título del personaje
       const titulo = document.createElement("h2");
       titulo.textContent = personaje.nombre;
-      titulo.className = 'nombreCarta';
+      titulo.className = "nombreCarta";
       divPersonaje.appendChild(titulo);
 
       // Agrega la imagen del personaje
       const imagen = document.createElement("img");
-      imagen.className = 'imgCarta';
+      imagen.className = "imgCarta";
       imagen.src = personaje.img;
       divPersonaje.appendChild(imagen);
       let i = 0;
       // Agrega el texto del personaje
-      const contenedorDeAtributos = document.createElement("div");
-      contenedorDeAtributos.className = 'contenedorDeTodosLosAtributos';
+
       // Agregar las imagenes del Atributo.
       AgregarIconosDelAtributo.forEach((atributos) => {
         const imagenAtributo = document.createElement("img");
         const textoAtributo = document.createElement("p");
+        const contenedorDeAtributos = document.createElement("div");
         imagenAtributo.src = atributos;
-        imagenAtributo.className = 'atributosIconos';
+        imagenAtributo.className = "atributosIconos";
 
         textoAtributo.textContent = `${personaje.atributos[i]}`;
-        textoAtributo.className = 'textoDeAtributo';
+        textoAtributo.className = "textoDeAtributo";
         contenedorDeAtributos.appendChild(imagenAtributo);
         contenedorDeAtributos.appendChild(textoAtributo);
+        
+        contenedorDeAtributos.className = "contenedorDeAtributos";
+        divPersonaje.appendChild(contenedorDeAtributos);
         i += 1;
       });
-      divPersonaje.appendChild(contenedorDeAtributos);
 
       // Agrega el contenedor del personaje al contenedor principal
       contenedorDeTodosLosAtributos.appendChild(divPersonaje);

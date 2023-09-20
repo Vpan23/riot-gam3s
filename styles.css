@@ -393,7 +393,7 @@ button {
   color: #fff;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: .5rem;
+  gap: .25rem;
 }
 /* Anadir el nombre */
 .nombreCarta {
@@ -406,6 +406,7 @@ button {
 .imgCarta {
   width: 60px;
   height: 60px;
+  margin: 5px 0;
 }
 .atributosIconos {
   width: 20px;
@@ -414,18 +415,18 @@ button {
 }
 .contenedorDeTodosLosAtributos {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: row;
-  border: 1px solid #000;
 }
 .contenedorDeAtributos {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   padding: 2px;
+  width: 60%;
+  border: 1px solid #000;
 }
 .textoDeAtributo {
   font-family: 'Courier New', Courier, monospace;
