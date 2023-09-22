@@ -204,7 +204,7 @@ let personajes = [
     img: "assets/missfortune.png",
   },
 ];
-let conteo = 0;
+
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
@@ -251,14 +251,37 @@ CASA.addEventListener("click", () => {
 
         contenedorDeAtributos.className = "contenedorDeAtributos";
         divPersonaje.appendChild(contenedorDeAtributos);
+
         i += 1;
       });
+      const botonCasaToUpgrade = document.createElement("button");
+      const botonCasaToSell = document.createElement("button");
+      botonCasaToUpgrade.className = "botonCasaToBuy";
+      botonCasaToSell.className = "botonCasaToSell";
+
+      // Agregar los Botones de Mejorar.
+      botonCasaToUpgrade.textContent = "Upgrade";
+      botonCasaToSell.textContent = "Sell";
+      divPersonaje.appendChild(botonCasaToUpgrade);
+      divPersonaje.appendChild(botonCasaToSell);
 
       // Agrega el contenedor del personaje al contenedor principal
       contenedorDeTodosLosAtributos.appendChild(divPersonaje);
       contenedorDeCartas.appendChild(contenedorDeTodosLosAtributos);
+
+      // Acceso a los botones de Mejorar y Vender personajes.
+      botonCasaToUpgrade.addEventListener('click', ()=> {
+        
+        console.log('upgrade ' + personaje.nombre);
+      })
+      botonCasaToSell.addEventListener('click', ()=> {
+        console.log('sell ' + personaje.nombre);
+      })
+
     } else {
       // console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
   });
 });
+
+

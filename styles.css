@@ -432,6 +432,29 @@ button {
   font-family: 'Courier New', Courier, monospace;
   font-size: 12px;
 }
+.botonCasaToBuy {
+  width: 100px;
+  height: 32px;
+  color: whitesmoke;
+  background-color: #15a615;
+  margin-top: 5px;
+}
+.botonCasaToBuy:hover {
+  scale: 1.05;
+  background-color: #4ba54b;
+  transition: all .3s;
+}
+.botonCasaToSell {
+  width: 80px;
+  height: 22px;
+  color: whitesmoke;
+  background: #b71818;
+}
+.botonCasaToSell:hover {
+  scale: 1.05;
+  background-color: #c44646;
+  transition: all .3s;
+}
 
 
 @media screen and (max-width: 768px) {
