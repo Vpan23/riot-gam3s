@@ -105,10 +105,16 @@ function monedero() {
   monedasTextDisplay.innerHTML = monedas;
 }
 
+// const de cada carta.
+const cartaLux = document.getElementById("cartaLux");
+const cartaAshe = document.getElementById("cartaAshe");
+const cartaMiss = document.getElementById("cartaMiss");
+
 // Funcion de compra de personajes.
 buttonToBuy.forEach(function (boton) {
   boton.addEventListener("click", function () {
-    if (boton.id !== "comprado") { //Esta condicional evaluara si el id del boton seleccionado no haya sido cambiada a comprado. En caso contrario se nos permitira acceder a comprar.
+    if (boton.id !== "comprado") {
+      //Esta condicional evaluara si el id del boton seleccionado no haya sido cambiada a comprado. En caso contrario se nos permitira acceder a comprar.
       var getButtonId = boton.id;
       console.log(getButtonId);
       switch (getButtonId) {
@@ -138,9 +144,17 @@ buttonToBuy.forEach(function (boton) {
           personajes[obtenerNumeroDePersonaje - 1].estado = true;
 
           //Busco una funcion para hacer desaparecer el personaje ya comprado cuando su estado sea true.
-          boton.id = "comprado";
-          boton.textContent = "Vendido";
-
+          switch (getButtonId) {
+            case "lux":
+              cartaLux.style.display = "none";
+              break;
+            case "ashe":
+              cartaAshe.style.display = "none";
+              break;
+            case "miss":
+              cartaMiss.style.display = "none";
+              break;
+          }
         } else {
           console.log("se ha rechazado la compra!");
         }
@@ -205,9 +219,15 @@ let personajes = [
     img: "assets/missfortune.png",
   },
 ];
-
+const casa_lux = document.getElementById("lux");
+const casa_ashe = document.getElementById("ashe");
+const casa_miss = document.getElementById("miss");
+let sellPersonaje;
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
+  function volverCasa() {
+    console.log("aqui");
+  }
   console.log("casa");
   PRINCIPAL.style.display = "none";
   mostrarCasa.style.display = "flex";
@@ -221,7 +241,8 @@ CASA.addEventListener("click", () => {
       // Crea un contenedor para el personaje
       const divPersonaje = document.createElement("div");
       divPersonaje.className = "carta-personaje";
-
+      divPersonaje.id = `carta-${personaje.nombre}`;
+      console.log(divPersonaje.id);
       // Agrega el título del personaje
       const titulo = document.createElement("h2");
       titulo.textContent = personaje.nombre;
@@ -271,18 +292,69 @@ CASA.addEventListener("click", () => {
       contenedorDeCartas.appendChild(contenedorDeTodosLosAtributos);
 
       // Acceso a los botones de Mejorar y Vender personajes.
-      botonCasaToUpgrade.addEventListener('click', ()=> {
-        
-        console.log('upgrade ' + personaje.nombre);
-      })
-      botonCasaToSell.addEventListener('click', ()=> {
-        console.log('sell ' + personaje.nombre);
-      })
+      botonCasaToUpgrade.addEventListener("click", () => {
+        console.log("upgrade " + personaje.nombre);
 
+        // Actualiza el atributo (en este caso, el atributo 2)
+        let nuevoAtributo =  Math.floor(0 + Math.random() * (5 - 0));
+        let nroDeMejora;
+        console.log(`Nro del Atributo:  ${nuevoAtributo}`);
+        //  mejora de atributos de manera aleatoria.
+        switch(nuevoAtributo) {
+          case 0:
+            personaje.atributos[0] += 1;
+            console.log(`subida en vida: ${personaje.atributos[0]}`)
+            break;
+          case 1:
+            personaje.atributos[1] += 1;
+            console.log(`subida en ataque: ${personaje.atributos[1]}`)
+            break;
+          case 2:
+            personaje.atributos[2] += 1;
+            console.log(`subida en poder: ${personaje.atributos[2]}`)
+            break;
+          case 3:
+            personaje.atributos[3] += 1;
+            console.log(`subida en defensa: ${personaje.atributos[3]}`)
+            break;
+          case 4:
+            personaje.atributos[4] += 1;
+            console.log(`subida en resistencia: ${personaje.atributos[4]}`)
+            break;
+        }
+        // Actualiza el contenido del elemento HTML que muestra el atributo
+        personaje.atributos[2].textContent = nuevoAtributo;
+      });
+      botonCasaToSell.addEventListener("click", () => {
+        console.log("sell " + personaje.nombre);
+        personaje.estado = false;
+
+        // Ocultar la carta del personaje vendido
+        const cartaPersonaje = document.getElementById(
+          `carta-${personaje.nombre}`
+        );
+        if (cartaPersonaje) {
+          cartaPersonaje.style.display = "none";
+        }
+        switch (personaje.nombre) {
+          case "lux":
+            cartaLux.style.display = "flex";
+            break;
+          case "ashe":
+            cartaAshe.style.display = "flex";
+            break;
+          case "miss":
+            cartaMiss.style.display = "flex";
+            break;
+        }
+        sellPersonaje = personaje.coste * 0.5;
+        monedas += sellPersonaje;
+        monedasTextDisplay.textContent = monedas;
+        monedasTienda.textContent = monedas;
+        console.log(monedas);
+      });
     } else {
       // console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
   });
 });
-
-
