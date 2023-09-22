@@ -139,6 +139,8 @@ buttonToBuy.forEach(function (boton) {
         // Marcara al personaje como ya comprado. La resta del uno es para evitar modificaciones en los numeros y que asi puedan ser contadas facilmente.
         personajes[obtenerNumeroDePersonaje - 1].estado = true;
         console.log(personajes[0].estado);
+        console.log(personajes[1].estado);
+        console.log(personajes[2].estado);
       } else {
         console.log("se ha rechazado la compra!");
       }
@@ -202,15 +204,15 @@ let personajes = [
     img: "assets/missfortune.png",
   },
 ];
-
+let conteo = 0;
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
   console.log("casa");
   PRINCIPAL.style.display = "none";
   mostrarCasa.style.display = "flex";
-
+  // Borrara todas las cartas anteriores que ya fueron creadas.
+  contenedorDeTodosLosAtributos.innerHTML = "";
   // Calcular que personajes tienen su estado activo(true).
-  let i;
   personajes.forEach((personaje) => {
     // console.log(`personaje ${personajes[i].nombre} ha pasado`);
     // Verifica si el estado del personaje es true
@@ -230,10 +232,11 @@ CASA.addEventListener("click", () => {
       imagen.className = "imgCarta";
       imagen.src = personaje.img;
       divPersonaje.appendChild(imagen);
-      let i = 0;
-      // Agrega el texto del personaje
 
+      // Agrega el texto del personaje
+      let i = 0;
       // Agregar las imagenes del Atributo.
+
       AgregarIconosDelAtributo.forEach((atributos) => {
         const imagenAtributo = document.createElement("img");
         const textoAtributo = document.createElement("p");
@@ -245,7 +248,7 @@ CASA.addEventListener("click", () => {
         textoAtributo.className = "textoDeAtributo";
         contenedorDeAtributos.appendChild(imagenAtributo);
         contenedorDeAtributos.appendChild(textoAtributo);
-        
+
         contenedorDeAtributos.className = "contenedorDeAtributos";
         divPersonaje.appendChild(contenedorDeAtributos);
         i += 1;
