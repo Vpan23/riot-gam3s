@@ -108,41 +108,42 @@ function monedero() {
 // Funcion de compra de personajes.
 buttonToBuy.forEach(function (boton) {
   boton.addEventListener("click", function () {
-    var getButtonId = boton.id;
-    console.log(getButtonId);
-    switch (getButtonId) {
-      case "lux":
-        costoPersonaje = personajes[0].coste;
-        obtenerNumeroDePersonaje = personajes[0].numero;
-        console.log(obtenerNumeroDePersonaje);
-        break;
-      case "ashe":
-        costoPersonaje = personajes[1].coste;
-        obtenerNumeroDePersonaje = personajes[1].numero;
-        console.log(obtenerNumeroDePersonaje);
-        break;
-      case "miss":
-        costoPersonaje = personajes[2].coste;
-        obtenerNumeroDePersonaje = personajes[2].numero;
-        console.log(obtenerNumeroDePersonaje);
-        break;
-    }
-    if (personajes[obtenerNumeroDePersonaje - 1].estado == false) {
-      // descontado al comprar un personaje.
-      if (monedas >= costoPersonaje) {
-        monedas -= costoPersonaje;
-        monedasTextDisplay.innerHTML = monedas;
-        monedasTienda.innerHTML = monedas;
-        console.log(monedas);
-        console.log("se ha comprado exitosamente!");
+    if (boton.id !== "comprado") { //Esta condicional evaluara si el id del boton seleccionado no haya sido cambiada a comprado. En caso contrario se nos permitira acceder a comprar.
+      var getButtonId = boton.id;
+      console.log(getButtonId);
+      switch (getButtonId) {
+        case "lux":
+          costoPersonaje = personajes[0].coste;
+          obtenerNumeroDePersonaje = personajes[0].numero;
+          break;
+        case "ashe":
+          costoPersonaje = personajes[1].coste;
+          obtenerNumeroDePersonaje = personajes[1].numero;
+          break;
+        case "miss":
+          costoPersonaje = personajes[2].coste;
+          obtenerNumeroDePersonaje = personajes[2].numero;
+          break;
+      }
+      if (personajes[obtenerNumeroDePersonaje - 1].estado == false) {
+        // descontado al comprar un personaje.
+        if (monedas >= costoPersonaje) {
+          monedas -= costoPersonaje;
+          monedasTextDisplay.innerHTML = monedas;
+          monedasTienda.innerHTML = monedas;
+          console.log(monedas);
+          console.log("se ha comprado exitosamente!");
 
-        // Marcara al personaje como ya comprado. La resta del uno es para evitar modificaciones en los numeros y que asi puedan ser contadas facilmente.
-        personajes[obtenerNumeroDePersonaje - 1].estado = true;
-        console.log(personajes[0].estado);
-        console.log(personajes[1].estado);
-        console.log(personajes[2].estado);
-      } else {
-        console.log("se ha rechazado la compra!");
+          // Marcara al personaje como ya comprado. La resta del uno es para evitar modificaciones en los numeros y que asi puedan ser contadas facilmente.
+          personajes[obtenerNumeroDePersonaje - 1].estado = true;
+
+          //Busco una funcion para hacer desaparecer el personaje ya comprado cuando su estado sea true.
+          boton.id = "comprado";
+          boton.textContent = "Vendido";
+
+        } else {
+          console.log("se ha rechazado la compra!");
+        }
       }
     } else {
       console.log("este personaje ya ha sido comprado!");

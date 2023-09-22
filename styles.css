@@ -348,6 +348,16 @@ button {
 .toBuy:hover {
   opacity: .6;
 }
+.cards .buttons #comprado {
+  background-color: #570707;
+  text-decoration: line-through;
+}
+.cards .buttons #comprado:hover {
+  background-color: #570707;
+  cursor: not-allowed;
+  opacity: 1;
+  user-select: unset;
+}
 .center-mid {
   font-size: 36px;
   font-weight: 700;
