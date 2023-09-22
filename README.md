@@ -3,7 +3,7 @@
 <p>
     This is a recreated riot-games website - based on league of legends contents - including a videogame which uses league of legends champs assets.
 </p>
-<img src='assets/ashe.png' style='width: 250px; height: 250px;'/>
+<img src='assets/ashe.png' style='width: 280px; height: 250px;'/>
 
 Título del juego: <h2>"Battle of Legends"</h2>
 
