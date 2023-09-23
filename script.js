@@ -83,14 +83,36 @@ goBackCasa.addEventListener("click", () => {
   PRINCIPAL.style.display = "flex";
 });
 
+const mensajeDeVacio = document.querySelector(".mensajeDeVacio");
+
 // Activador de la Funcion de Tienda.
 function tienda() {
   bienvenido();
   setTimeout(() => {}, 1200);
 
   tiendaDisplay.style.display = "flex";
+  // Dentro de esta funcion calcularemos si los personajes estan todos comprados entoces que muestre un mensaje de vacio.
+  conteoEnTrue();
   monedero();
 }
+function conteoEnTrue() {
+  let conteoDePersonajesEnTrue = 0;
+  for (let i = 0; i < personajes.length; i++) {
+    if (personajes[i].estado) {
+      conteoDePersonajesEnTrue += 1;
+      console.log(conteoDePersonajesEnTrue);
+    }
+  }
+  if (conteoDePersonajesEnTrue >= personajes.length) {
+    mensajeDeVacio.classList.remove("hidden");
+    mensajeDeVacio.classList.add("visible");
+  } else {
+    mensajeDeVacio.classList.remove("visible");
+    mensajeDeVacio.classList.add("hidden");
+  }
+}
+
+
 // Dar la bienvenida al entrar a la tienda.
 function bienvenido() {
   bienvenidoDisplay.style.display = "flex";
@@ -143,6 +165,17 @@ buttonToBuy.forEach(function (boton) {
           // Marcara al personaje como ya comprado. La resta del uno es para evitar modificaciones en los numeros y que asi puedan ser contadas facilmente.
           personajes[obtenerNumeroDePersonaje - 1].estado = true;
 
+          // Mostrar mensaje.
+          mensajeDisplayNegative.classList.remove("hidden");
+          mensajeDisplayNegative.classList.add("visible");
+          mensajeDisplayNegative.textContent = `-${costoPersonaje} monedas`;
+
+          // Establecer un temporizador para ocultar el mensaje después de 1 segundo
+          setTimeout(function () {
+            mensajeDisplayNegative.classList.remove("visible");
+            mensajeDisplayNegative.classList.add("hidden");
+          }, 1000);
+
           //Busco una funcion para hacer desaparecer el personaje ya comprado cuando su estado sea true.
           switch (getButtonId) {
             case "lux":
@@ -156,7 +189,16 @@ buttonToBuy.forEach(function (boton) {
               break;
           }
         } else {
-          console.log("se ha rechazado la compra!");
+          // Mostrar mensaje.
+          mensajeDisplayNegative.classList.remove("hidden");
+          mensajeDisplayNegative.classList.add("visible");
+          mensajeDisplayNegative.textContent = `Monedas Insuficientes!`;
+
+          // Establecer un temporizador para ocultar el mensaje después de 1 segundo
+          setTimeout(function () {
+            mensajeDisplayNegative.classList.remove("visible");
+            mensajeDisplayNegative.classList.add("hidden");
+          }, 1000);
         }
       }
     } else {
@@ -310,39 +352,40 @@ CASA.addEventListener("click", () => {
           case 0:
             personaje.atributos[0] += 1;
             console.log(`subida en vida: ${personaje.atributos[0]}`);
-            valorDeAtributo = 'Vida';
+            valorDeAtributo = "Vida";
             break;
           case 1:
             personaje.atributos[1] += 1;
             console.log(`subida en ataque: ${personaje.atributos[1]}`);
-            valorDeAtributo = 'Ataque';
+            valorDeAtributo = "Ataque";
             break;
           case 2:
             personaje.atributos[2] += 1;
             console.log(`subida en poder: ${personaje.atributos[2]}`);
-            valorDeAtributo = 'Poder de Habilidad';
+            valorDeAtributo = "Poder de Habilidad";
             break;
           case 3:
             personaje.atributos[3] += 1;
             console.log(`subida en defensa: ${personaje.atributos[3]}`);
-            valorDeAtributo = 'Defensa';
+            valorDeAtributo = "Defensa";
             break;
           case 4:
             personaje.atributos[4] += 1;
             console.log(`subida en resistencia: ${personaje.atributos[4]}`);
-            valorDeAtributo = 'Resistencia Magica';
+            valorDeAtributo = "Resistencia Magica";
             break;
         }
+
+        // Mostrar mensaje de cada mejorar.
         mensajeDisplayPositive.classList.remove("hidden");
         mensajeDisplayPositive.classList.add("visible");
-        mensajeDisplayPositive.textContent = `+1 ${valorDeAtributo}`
+        mensajeDisplayPositive.textContent = `+1 ${valorDeAtributo}`;
 
         // Establecer un temporizador para ocultar el mensaje después de 1 segundo
         setTimeout(function () {
           mensajeDisplayPositive.classList.remove("visible");
           mensajeDisplayPositive.classList.add("hidden");
         }, 1000);
-       
       });
 
       botonCasaToSell.addEventListener("click", () => {
@@ -372,6 +415,16 @@ CASA.addEventListener("click", () => {
         monedasTextDisplay.textContent = monedas;
         monedasTienda.textContent = monedas;
         console.log(monedas);
+        // Mostrar mensaje de cada vender.
+        mensajeDisplayPositive.classList.remove("hidden");
+        mensajeDisplayPositive.classList.add("visible");
+        mensajeDisplayPositive.textContent = `+${sellPersonaje} monedas`;
+
+        // Establecer un temporizador para ocultar el mensaje después de 1 segundo
+        setTimeout(function () {
+          mensajeDisplayPositive.classList.remove("visible");
+          mensajeDisplayPositive.classList.add("hidden");
+        }, 1000);
       });
     } else {
       // console.log(`personaje ${personajes[i].nombre} no ha pasado`);

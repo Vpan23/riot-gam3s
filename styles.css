@@ -426,6 +426,18 @@ button {
   display: block;
   opacity: 1;
 }
+.mensajeDeVacio {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
 /* Cartas Creadas */
 .carta-personaje {
