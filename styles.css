@@ -389,6 +389,43 @@ button {
   justify-content: start;
   align-items: center;
 }
+.messageDisplay {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+.message {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  max-width: 400px;
+  padding: .5rem;
+  background: #fff;
+}
+.mensajeDisplayPositive  { 
+  color: #15a615;
+}
+.mensajeDisplayNegative {
+  color: #b71818;
+}
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.visible {
+  display: block;
+  opacity: 1;
+}
 
 /* Cartas Creadas */
 .carta-personaje {

@@ -222,6 +222,12 @@ let personajes = [
 const casa_lux = document.getElementById("lux");
 const casa_ashe = document.getElementById("ashe");
 const casa_miss = document.getElementById("miss");
+const mensajeDisplayPositive = document.querySelector(
+  ".mensajeDisplayPositive"
+);
+const mensajeDisplayNegative = document.querySelector(
+  ".mensajeDisplayNegative"
+);
 let sellPersonaje;
 // Funcion al Tocar Casa.
 CASA.addEventListener("click", () => {
@@ -296,35 +302,49 @@ CASA.addEventListener("click", () => {
         console.log("upgrade " + personaje.nombre);
 
         // Actualiza el atributo (en este caso, el atributo 2)
-        let nuevoAtributo =  Math.floor(0 + Math.random() * (5 - 0));
-        let nroDeMejora;
+        let nuevoAtributo = Math.floor(0 + Math.random() * (5 - 0));
         console.log(`Nro del Atributo:  ${nuevoAtributo}`);
+        let valorDeAtributo;
         //  mejora de atributos de manera aleatoria.
-        switch(nuevoAtributo) {
+        switch (nuevoAtributo) {
           case 0:
             personaje.atributos[0] += 1;
-            console.log(`subida en vida: ${personaje.atributos[0]}`)
+            console.log(`subida en vida: ${personaje.atributos[0]}`);
+            valorDeAtributo = 'Vida';
             break;
           case 1:
             personaje.atributos[1] += 1;
-            console.log(`subida en ataque: ${personaje.atributos[1]}`)
+            console.log(`subida en ataque: ${personaje.atributos[1]}`);
+            valorDeAtributo = 'Ataque';
             break;
           case 2:
             personaje.atributos[2] += 1;
-            console.log(`subida en poder: ${personaje.atributos[2]}`)
+            console.log(`subida en poder: ${personaje.atributos[2]}`);
+            valorDeAtributo = 'Poder de Habilidad';
             break;
           case 3:
             personaje.atributos[3] += 1;
-            console.log(`subida en defensa: ${personaje.atributos[3]}`)
+            console.log(`subida en defensa: ${personaje.atributos[3]}`);
+            valorDeAtributo = 'Defensa';
             break;
           case 4:
             personaje.atributos[4] += 1;
-            console.log(`subida en resistencia: ${personaje.atributos[4]}`)
+            console.log(`subida en resistencia: ${personaje.atributos[4]}`);
+            valorDeAtributo = 'Resistencia Magica';
             break;
         }
-        // Actualiza el contenido del elemento HTML que muestra el atributo
-        personaje.atributos[2].textContent = nuevoAtributo;
+        mensajeDisplayPositive.classList.remove("hidden");
+        mensajeDisplayPositive.classList.add("visible");
+        mensajeDisplayPositive.textContent = `+1 ${valorDeAtributo}`
+
+        // Establecer un temporizador para ocultar el mensaje después de 1 segundo
+        setTimeout(function () {
+          mensajeDisplayPositive.classList.remove("visible");
+          mensajeDisplayPositive.classList.add("hidden");
+        }, 1000);
+       
       });
+
       botonCasaToSell.addEventListener("click", () => {
         console.log("sell " + personaje.nombre);
         personaje.estado = false;
