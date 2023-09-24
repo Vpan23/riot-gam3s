@@ -514,6 +514,14 @@ button {
   background-color: #c44646;
   transition: all .3s;
 }
+#sectionBatalla {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background-color: #c44646;
+}
 
 
 @media screen and (max-width: 768px) {

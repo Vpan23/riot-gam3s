@@ -31,8 +31,12 @@ const monedasTextDisplay = document.getElementById("monedas");
 const monedasTienda = document.getElementById("monedasTienda");
 
 const tiendaDisplay = document.querySelector(".tiendaDisplay");
+// Go BACK/ir devuelta al menu
 const goBack = document.querySelector(".goBack");
 const goBackCasa = document.querySelector(".goBack-casa");
+const goBackBatalla = document.querySelector(".goBack-batalla");
+
+
 let cards = document.querySelector(".cards");
 
 const bienvenidoDisplay = document.querySelector(".bienvenido");
@@ -53,10 +57,6 @@ TIENDA.addEventListener("click", () => {
   setTimeout(function () {
     tienda();
   }, 4000);
-});
-
-BATALLA.addEventListener("click", () => {
-  console.log("batalla");
 });
 
 // Barra de carga con Setinterval.
@@ -80,6 +80,10 @@ goBack.addEventListener("click", () => {
 });
 goBackCasa.addEventListener("click", () => {
   mostrarCasa.style.display = "none";
+  PRINCIPAL.style.display = "flex";
+});
+goBackBatalla.addEventListener("click", () => {
+  mostrarBatalla.style.display = "none";
   PRINCIPAL.style.display = "flex";
 });
 
@@ -430,4 +434,13 @@ CASA.addEventListener("click", () => {
       // console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
   });
+});
+
+const mostrarBatalla = document.getElementById('sectionBatalla');
+
+// Mostrar fase de Batalla.
+BATALLA.addEventListener("click", () => {
+  console.log("batalla");
+  PRINCIPAL.style.display = "none";
+  mostrarBatalla.style.display = "flex";
 });
