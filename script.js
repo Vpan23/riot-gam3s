@@ -18,6 +18,65 @@ searchButton.addEventListener("click", function () {
   }
 });
 
+// Menu de entrada.
+//Crear una entrada al menu que nos muestre la alcancia y nuestro mapa.
+const alcancia = document.querySelector(".alcancia");
+// Obtener los el click del boton de audio.
+const volumeOn = document.getElementById("volumeOn");
+const volumeOff = document.getElementById("volumeOff");
+const btnVolume = document.querySelector(".volumeControl");
+let volumeValue = true;
+btnVolume.addEventListener("click", () => {
+  if (volumeValue) {
+    volumeOn.style.display = "none";
+    volumeOff.style.display = "flex";
+    volumeValue = false;
+  } else {
+    volumeOff.style.display = "none";
+    volumeOn.style.display = "flex";
+    volumeValue = true;
+  }
+});
+// Obtener el valor de los botones de play y de options.
+const menuSection = document.getElementById("menuSection");
+const toPlayMenu = document.querySelector(".toPlayMenu");
+const toOptionsMenu = document.querySelector(".toOptionsMenu");
+// mostrar mapa de inicio/juego.
+toPlayMenu.addEventListener("click", () => {
+  console.log("funciona");
+  menuSection.style.display = "none";
+  PRINCIPAL.style.display = "flex";
+  alcancia.style.display = "flex";
+});
+const showOptionsMenu = document.querySelector(".showOptionsMenu");
+const quitMenuOption = document.getElementById("quitMenuOption");
+toOptionsMenu.addEventListener("click", () => {
+  console.log("funciona");
+
+  // mostrar el panel de options.
+  showOptionsMenu.style.display = "flex";
+
+  // Rango de Volumen
+  const volumenControl = document.getElementById("volumenControl");
+  const volumenValor = document.getElementById("volumenValor");
+
+  // Agrega un evento para detectar cambios en el control deslizante
+  volumenControl.addEventListener("input", () => {
+    // Actualiza el valor mostrado y ajusta el volumen del videojuego (aquí deberías implementar tu lógica para ajustar el volumen del juego)
+    const nuevoVolumen = volumenControl.value;
+    volumenValor.textContent = nuevoVolumen;
+
+    // Aquí puedes llamar a una función que ajuste el volumen del videojuego con el valor de nuevoVolumen
+    ajustarVolumenDelJuego(nuevoVolumen);
+  });
+
+  // Obtener llamado del boton de salir del menu de opciones.
+  quitMenuOption.addEventListener("click", () => {
+    showOptionsMenu.style.display = "none";
+    console.log("funcioona");
+  });
+});
+
 // seccion de juego
 const PRINCIPAL = document.querySelector(".map");
 
@@ -36,7 +95,6 @@ const goBack = document.querySelector(".goBack");
 const goBackCasa = document.querySelector(".goBack-casa");
 const goBackBatalla = document.querySelector(".goBack-batalla");
 
-
 let cards = document.querySelector(".cards");
 
 const bienvenidoDisplay = document.querySelector(".bienvenido");
@@ -46,10 +104,6 @@ const buttonToBuy = document.querySelectorAll(".toBuy");
 var monedas = 100;
 let costoPersonaje;
 let obtenerNumeroDePersonaje;
-
-// toBuy.addEventListener('click', ()=> {
-//   console.log('funciona')
-// })
 
 TIENDA.addEventListener("click", () => {
   console.log("tienda");
@@ -115,7 +169,6 @@ function conteoEnTrue() {
     mensajeDeVacio.classList.add("hidden");
   }
 }
-
 
 // Dar la bienvenida al entrar a la tienda.
 function bienvenido() {
@@ -436,7 +489,7 @@ CASA.addEventListener("click", () => {
   });
 });
 
-const mostrarBatalla = document.getElementById('sectionBatalla');
+const mostrarBatalla = document.getElementById("sectionBatalla");
 
 // Mostrar fase de Batalla.
 BATALLA.addEventListener("click", () => {

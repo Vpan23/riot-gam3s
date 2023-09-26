@@ -55,7 +55,47 @@
             web.
           </p>
         </div>
+
         <section class="play" id="playBground">
+          <!-- Section del menu -->
+          <div id="menuSection">
+            <button class="volumeControl">
+              <span class="material-symbols-outlined" id="volumeOn">
+                volume_up
+              </span>
+              <span class="material-symbols-outlined" id="volumeOff">
+                volume_off
+              </span>
+            </button>
+            <section class="contain-form-menu">
+              <div class="containImgMenu">
+                <img
+                  src="assets/menu-de-inicio-assets/BATTLE OF LEGENDS LOGO.png"
+                  alt=""
+                />
+              </div>
+              <button class="toPlayMenu">Play</button>
+              <button class="toOptionsMenu">Options</button>
+            </section>
+            <div class="showOptionsMenu">
+              <button id="quitMenuOption">
+                <span class="material-symbols-outlined"> close </span>
+              </button>
+              <div class="volumePanel">
+                <h1>Volumen Del Juego</h1>
+                <input
+                  type="range"
+                  id="volumenControl"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="50"
+                />
+                <p>Volumen: <span id="volumenValor">50</span></p>
+              </div>
+            </div>
+          </div>
+
           <!-- Map es considerado como el menu principal -->
           <div class="map">
             <div class="title opt">
@@ -94,7 +134,7 @@
               <span class="mensajeDeVacio hidden"
                 >El hogar se encuentra Vacio</span
               >
-              <span class="alcancia">
+              <span class="alcanciaTienda">
                 <span class="material-symbols-outlined"> monetization_on </span>
                 <span id="monedasTienda">100</span>
               </span>

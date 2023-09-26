@@ -163,15 +163,161 @@ li, a {
   flex-wrap: wrap;
   flex-direction: column;
 }
+
+/* Inicio a nuestro Juego - Section */
+#menuSection {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background-color: #242020;
+  background: url('assets/menu-de-inicio-assets/background-menu.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+/* Mostrar Menu de Options */
+.showOptionsMenu {
+  display: none;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: #000;
+  border: 8px double #fff;
+  padding: 1rem;
+}
+.showOptionsMenu:hover {
+  transition: 1s all;
+  box-shadow: 2px 1px 8px 2px #fff;
+}
+.volumePanel {
+  color: #fff;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px; /* Hace que el control deslizante tenga esquinas redondeadas */
+}
+
+/* Personaliza el riel del control deslizante */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  background: #fff;
+  border-radius: 5px; /* Hace que el riel tenga esquinas redondeadas */
+}
+
+/* Personaliza la pelotita del rango (punto de control) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; /* Aumenta el tamaño de la pelotita en 6px */
+  height: 20px; /* Aumenta el tamaño de la pelotita en 6px */
+  background: #15a615;
+  border-radius: 50%; /* Hace que la pelotita sea redonda */
+  cursor: pointer;
+  margin-top: -5px; /* Centra la pelotita verticalmente con respecto al riel */
+}
+#quitMenuOption {
+  background-color: #ff0000;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  cursor: pointer;
+  margin: .3rem;
+}
+#quitMenuOption:hover {
+  transition: .3s all;
+  opacity: 0.6;
+}
+.contain-form-menu {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.contain-form-menu button {
+  width: 100%;
+  /* height: 38px; */
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #cec9c9; */
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  /* color: #15a615; */
+  border: 1px solid #fff;
+}
+.contain-form-menu button:hover {
+  background-color: transparent;
+  transition: all 0.5s;
+  color: #fff;
+  scale: 1.05;
+}
+.toPlayMenu {
+ background-color: #0A323C;
+ color: #32a552;
+ height: 58px;
+ font-size: 24px;
+}
+.toOptionsMenu {
+  height: 32px;
+  font-size: 14px;
+  background-color: #5cca7b;;
+  color: #0a323c;
+}
+.containImgMenu {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  user-select: none;
+}
+.containImgMenu img {
+  width: 100%;
+}
+.volumeControl {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  padding: .35rem;
+  background-color: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+.volumeControl:hover {
+  background: #c5c3c3;
+}
+#volumeOn {
+  display: flex;
+}
+#volumeOff {
+  display: none;
+}
+
+/* Mostrar nuestro Mapa */
 #playBground {
   margin: 5rem;
   position: relative;
 }
 .map {
-  /* max-width: 800px; */
+  /* El display se activara una vez despues de dar click en jugar dentro del menu */
+  display: none;  
   width: 100%;
   height: 520px;
-  /* background-color: #000; */
   background: url('assets/background-map.jpg') no-repeat center;
   background-size: cover;
   position: relative;
@@ -250,6 +396,19 @@ li, a {
   font-family: 'Courier New', Courier, monospace;
 }
 .alcancia {
+  position: absolute;
+  width: 140px;
+  height: 35px;
+  background-color: #6b82884e;
+  border: 1px solid #000;
+  top: 10px;
+  left: 40px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .25rem;
+}
+.alcanciaTienda {
   position: absolute;
   width: 140px;
   height: 35px;
