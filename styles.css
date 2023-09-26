@@ -172,7 +172,6 @@ li, a {
   align-items: center;
   width: 100%;
   height: 520px;
-  background-color: #242020;
   background: url('assets/menu-de-inicio-assets/background-menu.jpg') no-repeat center;
   background-size: cover;
   background-attachment: fixed;
@@ -190,6 +189,7 @@ li, a {
   align-items: start;
   flex-wrap: wrap;
   flex-direction: column;
+  color: #fff;
 }
 .showOptionsMenu:hover {
   transition: 1s all;
@@ -226,7 +226,7 @@ li, a {
 }
 .graphPanel {
   color: #fff;
-  margin-top: 1rem;
+  margin: 1rem 0 ;
 }
 .graphPanel input[type="range"] {
   -webkit-appearance: none;
@@ -298,17 +298,14 @@ li, a {
 }
 .contain-form-menu button {
   width: 100%;
-  /* height: 38px; */
   border-radius: 10px;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-  /* background-color: #cec9c9; */
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  /* color: #15a615; */
   border: 1px solid #fff;
 }
 .contain-form-menu button:hover {
@@ -358,6 +355,64 @@ li, a {
 #volumeOff {
   display: none;
 }
+.userName-interface {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background-color: #242020;
+}
+.userName-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color: #fff;
+}
+.userName-title {
+  font-size: 24px;
+}
+.userName-input {
+  width: 200px;
+  height: 32px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.userName-form-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.userName-form-button {
+  background-color: #fff;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 .25rem;
+}
+.userName-form-button:hover {
+  opacity: .6;
+}
+.mensajeToUser {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+}
+
+
 
 /* Mostrar nuestro Mapa */
 #playBground {

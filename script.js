@@ -41,12 +41,42 @@ btnVolume.addEventListener("click", () => {
 const menuSection = document.getElementById("menuSection");
 const toPlayMenu = document.querySelector(".toPlayMenu");
 const toOptionsMenu = document.querySelector(".toOptionsMenu");
+const userNameInterface = document.querySelector(".userName-interface");
+
 // mostrar mapa de inicio/juego.
 toPlayMenu.addEventListener("click", () => {
-  console.log("funciona");
   menuSection.style.display = "none";
-  PRINCIPAL.style.display = "flex";
-  alcancia.style.display = "flex";
+  userNameInterface.style.display = "flex";
+  // Obtener referencias a los elementos HTML
+
+  const inputElement = document.getElementById("userNameInput");
+  const userNameSubmit = document.getElementById("submitUserNameButton");
+  const mensajeToUser = document.querySelector('.mensajeToUser');
+  const mensajeDisplay = document.querySelector('.mensajeDisplay');
+  // Variable para almacenar el contenido del input
+  let userName = "";
+
+  // Agregar un evento click al botón
+  userNameSubmit.addEventListener("click", function () {
+    // Obtener el valor del input
+    userName = inputElement.value;
+
+    // Hacer algo con la variable userName, por ejemplo, mostrarla en la consola.
+    console.log("Contenido del input:", userName);
+    if (userName != "") {
+      //Mostrar contenido.
+      userNameInterface.style.display = "none";
+      mensajeToUser.style.display = 'flex';
+      mensajeDisplay.textContent = `Bienvenido Jugador ${userName}`;
+      setTimeout(() => {
+        mensajeToUser.style.display = 'none';
+        PRINCIPAL.style.display = "flex";
+        alcancia.style.display = "flex";
+      }, 1500);
+    } else {
+      inputElement.value = "uSeR04923";
+    }
+  });
 });
 const showOptionsMenu = document.querySelector(".showOptionsMenu");
 const quitMenuOption = document.getElementById("quitMenuOption");
@@ -80,9 +110,9 @@ const discardChanges = document.getElementById("discard-changes");
 const graphicnControl = document.getElementById("graphicnControl");
 saveChanges.addEventListener("click", () => {
   console.log("save change");
-  saveChanges.textContent = 'Saving...';
+  saveChanges.textContent = "Saving...";
   setTimeout(() => {
-    saveChanges.textContent = 'Guardar Cambios';
+    saveChanges.textContent = "Guardar Cambios";
   }, 1000);
 });
 discardChanges.addEventListener("click", () => {
