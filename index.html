@@ -81,6 +81,7 @@
               <button id="quitMenuOption">
                 <span class="material-symbols-outlined"> close </span>
               </button>
+              <!-- Panel de Volumen -->
               <div class="volumePanel">
                 <h1>Volumen Del Juego</h1>
                 <input
@@ -93,6 +94,30 @@
                 />
                 <p>Volumen: <span id="volumenValor">50</span></p>
               </div>
+              <!-- Panel de graficos -->
+              <div class="graphPanel">
+                <h1>Graficos Del Juego</h1>
+                <input
+                  type="range"
+                  id="graphicnControl"
+                  min="0"
+                  max="2"
+                  value="1"
+                  step="1"
+                />
+                <div class="textGraphicContain">
+                  <p class="textGraphic-part">Low</p>
+                  <p class="textGraphic-part">Medium</p>
+                  <p class="textGraphic-part">High Quality</p>
+                </div>
+              </div>
+
+
+              <div class="buttons-section-menu-form">
+                <button id="discard-changes">Descartar Cambios</button>
+                <button id="save-changes">Guardar Cambios</button>
+              </div>
+
             </div>
           </div>
 

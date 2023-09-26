@@ -186,6 +186,10 @@ li, a {
   background-color: #000;
   border: 8px double #fff;
   padding: 1rem;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 .showOptionsMenu:hover {
   transition: 1s all;
@@ -194,7 +198,7 @@ li, a {
 .volumePanel {
   color: #fff;
 }
-input[type="range"] {
+.volumePanel input[type="range"] {
   -webkit-appearance: none;
   width: 200px;
   height: 10px;
@@ -203,7 +207,7 @@ input[type="range"] {
 }
 
 /* Personaliza el riel del control deslizante */
-input[type="range"]::-webkit-slider-runnable-track {
+ input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 10px;
   background: #fff;
@@ -211,7 +215,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 /* Personaliza la pelotita del rango (punto de control) */
-input[type="range"]::-webkit-slider-thumb {
+ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 20px; /* Aumenta el tamaño de la pelotita en 6px */
   height: 20px; /* Aumenta el tamaño de la pelotita en 6px */
@@ -220,6 +224,53 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   margin-top: -5px; /* Centra la pelotita verticalmente con respecto al riel */
 }
+.graphPanel {
+  color: #fff;
+  margin-top: 1rem;
+}
+.graphPanel input[type="range"] {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px; /* Hace que el control deslizante tenga esquinas redondeadas */
+}
+.textGraphicContain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120%;
+}
+.textGraphic-part {
+  display: flex;
+}
+
+.buttons-section-menu-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  margin: 1rem;
+  right: 0;
+  bottom: 0;
+}
+.buttons-section-menu-form button{
+  width: 120px;
+  height: 28px;
+  margin-left: 1rem;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #030303;
+  font-weight: 700;
+}
+.buttons-section-menu-form button:hover {
+  opacity: .6;
+}
+#save-changes {
+  background-color: #4ba54b;
+}
+
 #quitMenuOption {
   background-color: #ff0000;
   display: flex;

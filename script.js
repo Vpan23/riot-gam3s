@@ -65,9 +65,6 @@ toOptionsMenu.addEventListener("click", () => {
     // Actualiza el valor mostrado y ajusta el volumen del videojuego (aquí deberías implementar tu lógica para ajustar el volumen del juego)
     const nuevoVolumen = volumenControl.value;
     volumenValor.textContent = nuevoVolumen;
-
-    // Aquí puedes llamar a una función que ajuste el volumen del videojuego con el valor de nuevoVolumen
-    ajustarVolumenDelJuego(nuevoVolumen);
   });
 
   // Obtener llamado del boton de salir del menu de opciones.
@@ -75,6 +72,24 @@ toOptionsMenu.addEventListener("click", () => {
     showOptionsMenu.style.display = "none";
     console.log("funcioona");
   });
+});
+
+// Obtener los botones de discard/save changes.
+const saveChanges = document.getElementById("save-changes");
+const discardChanges = document.getElementById("discard-changes");
+const graphicnControl = document.getElementById("graphicnControl");
+saveChanges.addEventListener("click", () => {
+  console.log("save change");
+  saveChanges.textContent = 'Saving...';
+  setTimeout(() => {
+    saveChanges.textContent = 'Guardar Cambios';
+  }, 1000);
+});
+discardChanges.addEventListener("click", () => {
+  console.log("discard change");
+  volumenControl.value = 50;
+  volumenValor.textContent = 50;
+  graphicnControl.value = 1;
 });
 
 // seccion de juego
@@ -361,6 +376,7 @@ CASA.addEventListener("click", () => {
       divPersonaje.appendChild(imagen);
 
       // Agrega el texto del personaje
+
       let i = 0;
       // Agregar las imagenes del Atributo.
 
