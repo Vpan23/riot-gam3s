@@ -26,6 +26,8 @@ const volumeOn = document.getElementById("volumeOn");
 const volumeOff = document.getElementById("volumeOff");
 const btnVolume = document.querySelector(".volumeControl");
 let volumeValue = true;
+let userName = "";
+
 btnVolume.addEventListener("click", () => {
   if (volumeValue) {
     volumeOn.style.display = "none";
@@ -54,7 +56,7 @@ toPlayMenu.addEventListener("click", () => {
   const mensajeToUser = document.querySelector('.mensajeToUser');
   const mensajeDisplay = document.querySelector('.mensajeDisplay');
   // Variable para almacenar el contenido del input
-  let userName = "";
+  
 
   // Agregar un evento click al botón
   userNameSubmit.addEventListener("click", function () {
@@ -62,7 +64,6 @@ toPlayMenu.addEventListener("click", () => {
     userName = inputElement.value;
 
     // Hacer algo con la variable userName, por ejemplo, mostrarla en la consola.
-    console.log("Contenido del input:", userName);
     if (userName != "") {
       //Mostrar contenido.
       userNameInterface.style.display = "none";
@@ -536,10 +537,13 @@ CASA.addEventListener("click", () => {
 });
 
 const mostrarBatalla = document.getElementById("sectionBatalla");
-
+const mostrarNombreUsuario = document.querySelector('.mostrarNombreUsuario');
 // Mostrar fase de Batalla.
 BATALLA.addEventListener("click", () => {
   console.log("batalla");
   PRINCIPAL.style.display = "none";
   mostrarBatalla.style.display = "flex";
+  console.log('funcion');
+  // mostrarNombreUsuario.innerHTML = 'f'
+  mostrarNombreUsuario.innerHTML = `1. ${userName}`;
 });
