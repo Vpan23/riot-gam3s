@@ -573,39 +573,79 @@ BATALLA.addEventListener("click", () => {
 
   // funcion para mostrar el rango del jugador.
   mostrarRango();
+
+  // funcion selector de campeones.
+  mostrarSelectorDeCampeones();
 });
-let puntajeRango = 350;
+
+const casilleroVacioText = document.querySelector(".mostrarComoVacio");
+
+const contenedorDeIconosParaCasilla = [
+  "assets/batalla-icon-personajes/lux-icon.jpg",
+  "assets/batalla-icon-personajes/ashe-icon.jpg",
+  "assets/batalla-icon-personajes/miss-icon.jpg",
+];
+const casillero = document.querySelector(".contenedor-de-casillas");
+function mostrarSelectorDeCampeones() {
+
+  casillero.innerHTML = "";
+
+  personajes.forEach((personaje) => {
+    if (personaje.estado) {
+      // Volver a crear los elementos para cada personaje.
+      const crearCasillaSelector = document.createElement("div");
+      const crearImagenCasilla = document.createElement("img");
+      
+      // Crear la imagen y el contenedor.
+      crearCasillaSelector.className = "crearCasillaSelector";
+      crearImagenCasilla.className = "crearImagenCasilla";
+      crearImagenCasilla.src = personaje.img;
+      crearCasillaSelector.appendChild(crearImagenCasilla);
+      casillero.appendChild(crearCasillaSelector);
+    }
+  });
+}
+
+let puntajeRango = 0;
 function mostrarRango() {
   let obtenerNumeroDeLp;
 
-  if (puntajeRango >= 0) {  //Iron
+  if (puntajeRango >= 0) {
+    //Iron
     obtenerNumeroDeLp = 0;
   }
-  if (puntajeRango >= 300) {  //Bronze
+  if (puntajeRango >= 200) {
+    //Bronze
     obtenerNumeroDeLp = 1;
   }
-  if (puntajeRango >= 600) {  //Silver
+  if (puntajeRango >= 400) {
+    //Silver
     obtenerNumeroDeLp = 2;
   }
-  if (puntajeRango >= 900) {  //Gold
+  if (puntajeRango >= 600) {
+    //Gold
     obtenerNumeroDeLp = 3;
   }
-  if (puntajeRango >= 1200) { //Platinum
+  if (puntajeRango >= 900) {
+    //Platinum
     obtenerNumeroDeLp = 4;
   }
-  if (puntajeRango >= 1500) { //Diamond
+  if (puntajeRango >= 1200) {
+    //Diamond
     obtenerNumeroDeLp = 5;
   }
-  if (puntajeRango >= 1800) {  //Master
+  if (puntajeRango >= 1500) {
+    //Master
     obtenerNumeroDeLp = 6;
   }
-  if (puntajeRango >= 2200) { //Grandmaster
+  if (puntajeRango >= 2000) {
+    //Grandmaster
     obtenerNumeroDeLp = 7;
   }
-  if (puntajeRango >= 3000) { //Challenger
+  if (puntajeRango >= 3000) {
+    //Challenger
     obtenerNumeroDeLp = 8;
   }
-  console.log(obtenerNumeroDeLp);
   mostrarRangoImg.src = guardarRangoImg[obtenerNumeroDeLp];
   mostrarRangoText.textContent = guardarRangoText[obtenerNumeroDeLp];
 }
