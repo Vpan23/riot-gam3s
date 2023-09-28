@@ -53,10 +53,9 @@ toPlayMenu.addEventListener("click", () => {
 
   const inputElement = document.getElementById("userNameInput");
   const userNameSubmit = document.getElementById("submitUserNameButton");
-  const mensajeToUser = document.querySelector('.mensajeToUser');
-  const mensajeDisplay = document.querySelector('.mensajeDisplay');
+  const mensajeToUser = document.querySelector(".mensajeToUser");
+  const mensajeDisplay = document.querySelector(".mensajeDisplay");
   // Variable para almacenar el contenido del input
-  
 
   // Agregar un evento click al botón
   userNameSubmit.addEventListener("click", function () {
@@ -67,10 +66,10 @@ toPlayMenu.addEventListener("click", () => {
     if (userName != "") {
       //Mostrar contenido.
       userNameInterface.style.display = "none";
-      mensajeToUser.style.display = 'flex';
+      mensajeToUser.style.display = "flex";
       mensajeDisplay.textContent = `Bienvenido Jugador ${userName}`;
       setTimeout(() => {
-        mensajeToUser.style.display = 'none';
+        mensajeToUser.style.display = "none";
         PRINCIPAL.style.display = "flex";
         alcancia.style.display = "flex";
       }, 1500);
@@ -537,13 +536,76 @@ CASA.addEventListener("click", () => {
 });
 
 const mostrarBatalla = document.getElementById("sectionBatalla");
-const mostrarNombreUsuario = document.querySelector('.mostrarNombreUsuario');
+const mostrarNombreUsuario = document.querySelector(".mostrarNombreUsuario");
+// Rangos
+const mostrarRangoImg = document.querySelector(".rango-img");
+const mostrarRangoText = document.querySelector(".rango-text");
+
+let guardarRangoImg = [
+  "https://cdn3.emoji.gg/emojis/7574-iron.png",
+  "https://cdn3.emoji.gg/emojis/1184-bronze.png",
+  "https://cdn3.emoji.gg/emojis/7455-silver.png",
+  "https://cdn3.emoji.gg/emojis/1053-gold.png",
+  "https://cdn3.emoji.gg/emojis/3978-platinum.png",
+  "https://cdn3.emoji.gg/emojis/1053-diamond.png",
+  "https://cdn3.emoji.gg/emojis/9231-master.png",
+  "https://cdn3.emoji.gg/emojis/9476-grandmaster.png",
+  "https://cdn3.emoji.gg/emojis/9476-challenger.png",
+];
+let guardarRangoText = [
+  "Iron",
+  "Bronze",
+  "Silver",
+  "Gold",
+  "Platinum",
+  "Diamond",
+  "Master",
+  "Grandmaster",
+  "Challenger",
+];
+
 // Mostrar fase de Batalla.
 BATALLA.addEventListener("click", () => {
   console.log("batalla");
   PRINCIPAL.style.display = "none";
   mostrarBatalla.style.display = "flex";
-  console.log('funcion');
-  // mostrarNombreUsuario.innerHTML = 'f'
-  mostrarNombreUsuario.innerHTML = `1. ${userName}`;
+  mostrarNombreUsuario.innerHTML = `1. ${userName} ${puntajeRango}LP`;
+
+  // funcion para mostrar el rango del jugador.
+  mostrarRango();
 });
+let puntajeRango = 350;
+function mostrarRango() {
+  let obtenerNumeroDeLp;
+
+  if (puntajeRango >= 0) {  //Iron
+    obtenerNumeroDeLp = 0;
+  }
+  if (puntajeRango >= 300) {  //Bronze
+    obtenerNumeroDeLp = 1;
+  }
+  if (puntajeRango >= 600) {  //Silver
+    obtenerNumeroDeLp = 2;
+  }
+  if (puntajeRango >= 900) {  //Gold
+    obtenerNumeroDeLp = 3;
+  }
+  if (puntajeRango >= 1200) { //Platinum
+    obtenerNumeroDeLp = 4;
+  }
+  if (puntajeRango >= 1500) { //Diamond
+    obtenerNumeroDeLp = 5;
+  }
+  if (puntajeRango >= 1800) {  //Master
+    obtenerNumeroDeLp = 6;
+  }
+  if (puntajeRango >= 2200) { //Grandmaster
+    obtenerNumeroDeLp = 7;
+  }
+  if (puntajeRango >= 3000) { //Challenger
+    obtenerNumeroDeLp = 8;
+  }
+  console.log(obtenerNumeroDeLp);
+  mostrarRangoImg.src = guardarRangoImg[obtenerNumeroDeLp];
+  mostrarRangoText.textContent = guardarRangoText[obtenerNumeroDeLp];
+}

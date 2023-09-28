@@ -13,11 +13,7 @@
   scroll-behavior: smooth;
 }
 body {
-  /* width: 100%; */
   background-color: #fff;
-}
-.hidden {
-  display: none;
 }
 
 #container {
@@ -839,6 +835,31 @@ button {
   background-color: #0a323c;
   transition: all 0.5s;
   box-shadow: 3px 3px 15px 6px;
+}
+/* Seccion de Rangos */
+.mostrar-rango {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transform: translate(-30%, -50%);
+  margin: 1rem;
+  background-color: #fff;
+  max-width: 150px;
+  padding: 0 2rem;
+  border-radius: 0 0 50px 50px;
+}
+.rango-text {
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  margin-left: .25rem;
+  font-size: 14px;
+}
+.rango-img {
+  width: 40px;
+  height: 30px;
 }
 
 @media screen and (max-width: 768px) {
