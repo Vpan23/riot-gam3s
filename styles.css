@@ -861,6 +861,40 @@ button {
   width: 40px;
   height: 30px;
 }
+
+/* Casillero */
+.casillero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 1rem;
+  padding: .5rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #0a1428;
+  gap: .5rem;
+  color: #fff;
+}
+.centro-de-botones-casillero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.centro-de-botones-casillero button {
+  padding: .25rem .75rem;
+  border: none;
+  background: #42a7a5;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.centro-de-botones-casillero button:hover {
+  opacity: .6;
+}
+
 .contenedor-de-casillas {
   display: flex;
   justify-content: start;
@@ -868,10 +902,6 @@ button {
   width: 400px;
   height: 120px;
   background-color: #c5c3c3;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 1rem;
   padding: 1rem;
 }
 .mostrarComoVacio {

@@ -584,20 +584,20 @@ BATALLA.addEventListener("click", () => {
   startToPlay();
 });
 
-const buttonStartToPlay = document.querySelector('.startToPlay');
+const buttonStartToPlay = document.querySelector(".startToPlay");
 
 function startToPlay() {
   // Mostrar carga de pantalla
   mostrarBusquedaDeEnemigos();
 
   // puntajeRango - LP
-  buttonStartToPlay.addEventListener('click',()=> {
-    console.log('funciona');
-  })
+  buttonStartToPlay.addEventListener("click", () => {
+    console.log("funciona");
+  });
 }
 
-function mostrarBusquedaDeEnemigos(){
-  console.log('cargando');
+function mostrarBusquedaDeEnemigos() {
+  console.log("cargando");
 }
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");
@@ -630,7 +630,6 @@ function mostrarSelectorDeCampeones() {
 
       // Funcion para devolver el boton obtenido del personaje clickeado.
       crearCasillaSelector.addEventListener("click", () => {
-        console.log(personaje.uso);
         if (personaje.uso === "activado") {
           personaje.uso = "desactivado";
           crearCasillaSelector.classList.remove("activado");
@@ -640,6 +639,13 @@ function mostrarSelectorDeCampeones() {
           personaje.uso = "activado";
           crearCasillaSelector.classList.add("activado");
         }
+      });
+      seleccionarTodoButton.addEventListener("click", () => {
+        console.log("seleccionarTodoButton");
+        personajes.forEach((personaje) => {
+          personaje.uso = "activado";
+        });
+        mostrarSelectorDeCampeones();
       });
     }
   });
@@ -696,3 +702,25 @@ function mostrarRango() {
   mostrarRangoImg.src = guardarRangoImg[obtenerNumeroDeLp];
   mostrarRangoText.textContent = guardarRangoText[obtenerNumeroDeLp];
 }
+
+// Funcion de 3 botones dentro del casillero.
+const reestablecerTableroButton = document.querySelector(
+  ".reestablecerTablero"
+);
+const seleccionarTodoButton = document.querySelector(".seleccionarTodo");
+const expandirCasilleroButton = document.querySelector(".expandirCasillero");
+
+// Boton para reestablecer nuestra seleccion de campeones
+reestablecerTableroButton.addEventListener("click", () => {
+  console.log("reestablecerTabler");
+  personajes.forEach((personaje) => {
+    personaje.uso = "desactivado";
+  });
+  mostrarSelectorDeCampeones();
+});
+
+
+
+expandirCasilleroButton.addEventListener("click", () => {
+  console.log("expandirCasilleroButton");
+});
