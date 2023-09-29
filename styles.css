@@ -852,9 +852,9 @@ button {
 }
 .rango-text {
   text-transform: uppercase;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: 700;
-  margin-left: .25rem;
+  margin-left: 0.25rem;
   font-size: 14px;
 }
 .rango-img {
@@ -875,18 +875,19 @@ button {
   padding: 1rem;
 }
 .mostrarComoVacio {
-  display: none;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
   text-transform: capitalize;
+  color: #0a1428;
 }
 .crearImagenCasilla {
   width: 100%;
   height: 100%;
+  user-select: none;
 }
 .crearImagenCasilla:hover {
   scale: 1.125;
-  transition: .3s ease-in-out all;
+  transition: 0.3s ease-in-out all;
 }
 .crearCasillaSelector {
   width: 80px;
@@ -898,7 +899,15 @@ button {
 .crearCasillaSelector:hover {
   background-color: #0a323c;
   cursor: pointer;
-  transition: .3s ease-in-out all;
+  transition: 0.3s ease-in-out all;
+}
+/* En caso de haberlo seleccionado */
+.activado {
+  background-color: #15a615;
+  border: transparent;
+}
+.activado:hover {
+  background-color: #4ba54b;
 }
 
 @media screen and (max-width: 768px) {

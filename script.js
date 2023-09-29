@@ -345,6 +345,7 @@ let personajes = [
     coste: 100,
     estado: false,
     img: "assets/lux.png",
+    uso: "desactivado",
   },
   {
     nombre: "ashe",
@@ -353,6 +354,7 @@ let personajes = [
     coste: 150,
     estado: false,
     img: "assets/ashe.png",
+    uso: "desactivado",
   },
   {
     nombre: "miss",
@@ -361,6 +363,7 @@ let personajes = [
     coste: 250,
     estado: false,
     img: "assets/missfortune.png",
+    uso: "desactivado",
   },
 ];
 const casa_lux = document.getElementById("lux");
@@ -576,7 +579,14 @@ BATALLA.addEventListener("click", () => {
 
   // funcion selector de campeones.
   mostrarSelectorDeCampeones();
+
+  // funcion para empezar las batallas.
+  startToPlay();
 });
+
+function startToPlay() {
+  
+}
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");
 
@@ -586,24 +596,49 @@ const contenedorDeIconosParaCasilla = [
   "assets/batalla-icon-personajes/miss-icon.jpg",
 ];
 const casillero = document.querySelector(".contenedor-de-casillas");
-function mostrarSelectorDeCampeones() {
+const crearMensajeVacioCasilla = document.createElement("span");
 
+function mostrarSelectorDeCampeones() {
   casillero.innerHTML = "";
 
+  let contadorPersonajesEnCasilla = 0;
   personajes.forEach((personaje) => {
     if (personaje.estado) {
+      contadorPersonajesEnCasilla += 1;
       // Volver a crear los elementos para cada personaje.
-      const crearCasillaSelector = document.createElement("div");
+      const crearCasillaSelector = document.createElement("button");
       const crearImagenCasilla = document.createElement("img");
-      
+
       // Crear la imagen y el contenedor.
       crearCasillaSelector.className = "crearCasillaSelector";
       crearImagenCasilla.className = "crearImagenCasilla";
       crearImagenCasilla.src = personaje.img;
       crearCasillaSelector.appendChild(crearImagenCasilla);
       casillero.appendChild(crearCasillaSelector);
+
+      // Funcion para devolver el boton obtenido del personaje clickeado.
+      crearCasillaSelector.addEventListener("click", () => {
+        console.log(personaje.uso);
+        if (personaje.uso === "activado") {
+          personaje.uso = "desactivado";
+          crearCasillaSelector.classList.remove("activado");
+          console.log(crearCasillaSelector.className);
+        } else {
+          //En caso de que sea desactivado.
+          personaje.uso = "activado";
+          crearCasillaSelector.classList.add("activado");
+        }
+      });
     }
   });
+  console.log(contadorPersonajesEnCasilla);
+  if (contadorPersonajesEnCasilla == 0) {
+    // Crear elemento de mensaje al no tener ningun campeon disponible.
+    crearMensajeVacioCasilla.className = "mostrarComoVacio";
+    crearMensajeVacioCasilla.textContent =
+      "La casilla se encuentra vacía, Intenta Nuevamente!";
+    casillero.appendChild(crearMensajeVacioCasilla);
+  }
 }
 
 let puntajeRango = 0;
