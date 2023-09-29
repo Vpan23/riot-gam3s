@@ -584,8 +584,20 @@ BATALLA.addEventListener("click", () => {
   startToPlay();
 });
 
+const buttonStartToPlay = document.querySelector('.startToPlay');
+
 function startToPlay() {
-  
+  // Mostrar carga de pantalla
+  mostrarBusquedaDeEnemigos();
+
+  // puntajeRango - LP
+  buttonStartToPlay.addEventListener('click',()=> {
+    console.log('funciona');
+  })
+}
+
+function mostrarBusquedaDeEnemigos(){
+  console.log('cargando');
 }
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");
