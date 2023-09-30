@@ -377,10 +377,10 @@ const mensajeDisplayNegative = document.querySelector(
 );
 let sellPersonaje;
 // Funcion al Tocar Casa.
-CASA.addEventListener("click", () => {
-  function volverCasa() {
-    console.log("aqui");
-  }
+CASA.addEventListener("click", () =>{
+  entrarCasa();
+});
+function entrarCasa() {
   console.log("casa");
   PRINCIPAL.style.display = "none";
   mostrarCasa.style.display = "flex";
@@ -492,6 +492,7 @@ CASA.addEventListener("click", () => {
           mensajeDisplayPositive.classList.remove("visible");
           mensajeDisplayPositive.classList.add("hidden");
         }, 1000);
+        entrarCasa();
       });
 
       botonCasaToSell.addEventListener("click", () => {
@@ -536,7 +537,7 @@ CASA.addEventListener("click", () => {
       // console.log(`personaje ${personajes[i].nombre} no ha pasado`);
     }
   });
-});
+}
 
 const mostrarBatalla = document.getElementById("sectionBatalla");
 const mostrarNombreUsuario = document.querySelector(".mostrarNombreUsuario");
