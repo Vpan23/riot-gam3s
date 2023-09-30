@@ -847,7 +847,7 @@ button {
   margin: 1rem;
   background-color: #fff;
   max-width: 150px;
-  padding: 0 2rem;
+  padding: 0 2rem 0 1.25rem;
   border-radius: 0 0 50px 50px;
 }
 .rango-text {
@@ -894,15 +894,15 @@ button {
 .centro-de-botones-casillero button:hover {
   opacity: .6;
 }
-
 .contenedor-de-casillas {
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   width: 400px;
   height: 120px;
   background-color: #c5c3c3;
-  padding: 1rem;
+  transition:  0.3s ease;
+  padding: 1rem 1.5rem;
 }
 .mostrarComoVacio {
   font-weight: 700;
@@ -938,6 +938,21 @@ button {
 }
 .activado:hover {
   background-color: #4ba54b;
+}
+.expandirCasillero {
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.expandIcon {
+  transform: rotate(180deg);
+  transition: 0.75s ease;
+  display: flex;
+}
+.rotar-180 {
+  transform: rotate(0deg);
+  transition: 0.75s ease; /* Agrega una transición suave */
 }
 
 @media screen and (max-width: 768px) {

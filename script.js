@@ -626,6 +626,12 @@ function mostrarSelectorDeCampeones() {
       crearImagenCasilla.className = "crearImagenCasilla";
       crearImagenCasilla.src = personaje.img;
       crearCasillaSelector.appendChild(crearImagenCasilla);
+
+      // Establecer la clase "activado" según el estado de uso del personaje.
+      if (personaje.uso === "activado") {
+        crearCasillaSelector.classList.add("activado");
+      }
+
       casillero.appendChild(crearCasillaSelector);
 
       // Funcion para devolver el boton obtenido del personaje clickeado.
@@ -640,24 +646,60 @@ function mostrarSelectorDeCampeones() {
           crearCasillaSelector.classList.add("activado");
         }
       });
-      seleccionarTodoButton.addEventListener("click", () => {
-        console.log("seleccionarTodoButton");
-        personajes.forEach((personaje) => {
-          personaje.uso = "activado";
-        });
-        mostrarSelectorDeCampeones();
-      });
     }
   });
+
   console.log(contadorPersonajesEnCasilla);
+
   if (contadorPersonajesEnCasilla == 0) {
-    // Crear elemento de mensaje al no tener ningun campeon disponible.
+    // Crear elemento de mensaje al no tener ningún campeón disponible.
     crearMensajeVacioCasilla.className = "mostrarComoVacio";
     crearMensajeVacioCasilla.textContent =
       "La casilla se encuentra vacía, Intenta Nuevamente!";
     casillero.appendChild(crearMensajeVacioCasilla);
   }
 }
+
+// Funcion de 3 botones dentro del casillero.
+const reestablecerTableroButton = document.querySelector(
+  ".reestablecerTablero"
+);
+const seleccionarTodoButton = document.querySelector(".seleccionarTodo");
+const expandirCasilleroButton = document.querySelector(".expandirCasillero");
+
+// Boton para reestablecer nuestra seleccion de campeones
+reestablecerTableroButton.addEventListener("click", () => {
+  console.log("reestablecerTabler");
+  personajes.forEach((personaje) => {
+    personaje.uso = "desactivado";
+  });
+  mostrarSelectorDeCampeones();
+});
+seleccionarTodoButton.addEventListener("click", () => {
+  console.log("seleccionarTodoButton");
+  personajes.forEach((personaje) => {
+    personaje.uso = "activado";
+  });
+  mostrarSelectorDeCampeones();
+});
+let evaluarAlturaDelCasillero = false;
+
+const iconoExpandirCasillero = document.querySelector('.expandIcon'); 
+
+// Expandir el alto del casillero para recibir mas personajes.
+expandirCasilleroButton.addEventListener("click", () => {
+  console.log("expandirCasilleroButton");
+  // Rotar elemento dentro del boton.
+  iconoExpandirCasillero.classList.toggle("rotar-180");
+  
+  if (evaluarAlturaDelCasillero) {
+    casillero.style.height = "120px"; // Establecer una altura fija para contraer
+    evaluarAlturaDelCasillero = false;
+  } else {
+    casillero.style.height = "400px"; // Establecer una altura mayor para expandir
+    evaluarAlturaDelCasillero = true;
+  }
+});
 
 let puntajeRango = 0;
 function mostrarRango() {
@@ -702,25 +744,3 @@ function mostrarRango() {
   mostrarRangoImg.src = guardarRangoImg[obtenerNumeroDeLp];
   mostrarRangoText.textContent = guardarRangoText[obtenerNumeroDeLp];
 }
-
-// Funcion de 3 botones dentro del casillero.
-const reestablecerTableroButton = document.querySelector(
-  ".reestablecerTablero"
-);
-const seleccionarTodoButton = document.querySelector(".seleccionarTodo");
-const expandirCasilleroButton = document.querySelector(".expandirCasillero");
-
-// Boton para reestablecer nuestra seleccion de campeones
-reestablecerTableroButton.addEventListener("click", () => {
-  console.log("reestablecerTabler");
-  personajes.forEach((personaje) => {
-    personaje.uso = "desactivado";
-  });
-  mostrarSelectorDeCampeones();
-});
-
-
-
-expandirCasilleroButton.addEventListener("click", () => {
-  console.log("expandirCasilleroButton");
-});
