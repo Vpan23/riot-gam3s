@@ -586,19 +586,31 @@ BATALLA.addEventListener("click", () => {
 });
 
 const buttonStartToPlay = document.querySelector(".startToPlay");
+const mostrarEstadioDeCombate = document.querySelector('.mostrarEstadioDeCombate');
+
+buttonStartToPlay.addEventListener("click", () => {
+  mostrarBatalla.style.display = "none";
+  mostrarEstadioDeCombate.style.display = 'flex';
+  // Entrada a la seccion de encontrar batalla.
+  startToPlay();
+});
 
 function startToPlay() {
   // Mostrar carga de pantalla
   mostrarBusquedaDeEnemigos();
-
   // puntajeRango - LP
-  buttonStartToPlay.addEventListener("click", () => {
-    console.log("funciona");
-  });
+  mostrarCombate();
 }
-
+const barraDeCargaEnCombate = document.querySelector('.barraDeCargaEnCombate');
+// Barra de Busqueda.
 function mostrarBusquedaDeEnemigos() {
   console.log("cargando");
+  barraDeCargaEnCombate.textContent = '';
+}
+// Combate.
+function mostrarCombate() {
+  // Ocutaremos el menu de batalla y entraremos al de combate.
+  
 }
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");

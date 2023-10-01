@@ -954,6 +954,16 @@ button {
   transform: rotate(0deg);
   transition: 0.75s ease; /* Agrega una transición suave */
 }
+/* Entrar en Combate */
+.mostrarEstadioDeCombate {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background-color: #b9b9b9;
+}
 
 @media screen and (max-width: 768px) {
   #playBground {
