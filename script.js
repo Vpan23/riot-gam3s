@@ -377,7 +377,7 @@ const mensajeDisplayNegative = document.querySelector(
 );
 let sellPersonaje;
 // Funcion al Tocar Casa.
-CASA.addEventListener("click", () =>{
+CASA.addEventListener("click", () => {
   entrarCasa();
 });
 function entrarCasa() {
@@ -585,15 +585,45 @@ BATALLA.addEventListener("click", () => {
   startToPlay();
 });
 
+// Funcion de mostrar los modos de juegos.
+let evaluarModoDeJuego = false;
+let modoDeJuego = "modo-historia";
+const selectModeContainer = document.querySelector(".select-mode-container");
+const btnExpandModeContainer = document.querySelector(".selectGameMode");
+const modeButtons = document.querySelectorAll(".mode-button");
+btnExpandModeContainer.addEventListener("click", () => {
+  evaluarModo();
+});
+function evaluarModo() {
+  if (evaluarModoDeJuego) {
+    selectModeContainer.style.height = "32px"; // Establecer una altura fija para contraer
+    evaluarModoDeJuego = false;
+  } else {
+    selectModeContainer.style.height = "165px"; // Establecer una altura mayor para expandir
+    evaluarModoDeJuego = true;
+  }
+}
+const selectGameMode = document.querySelector('.selectGameMode');
+modeButtons.forEach(function (boton) {
+  boton.addEventListener("click", () => {
+    console.log(`Traspasar el id: ${boton.id}`);
+    modoDeJuego = boton.id;
+    evaluarModoDeJuego = true;
+    selectGameMode.textContent = modoDeJuego;
+    evaluarModo();
+  });
+});
+
 const buttonStartToPlay = document.querySelector(".startToPlay");
 
 function startToPlay() {
   // Mostrar carga de pantalla
   mostrarBusquedaDeEnemigos();
 
-  // puntajeRango - LP
+  selectGameMode.textContent = "Selección Automática";
+
   buttonStartToPlay.addEventListener("click", () => {
-    console.log("funciona");
+    console.log(modoDeJuego);
   });
 }
 
@@ -685,14 +715,14 @@ seleccionarTodoButton.addEventListener("click", () => {
 });
 let evaluarAlturaDelCasillero = false;
 
-const iconoExpandirCasillero = document.querySelector('.expandIcon'); 
+const iconoExpandirCasillero = document.querySelector(".expandIcon");
 
 // Expandir el alto del casillero para recibir mas personajes.
 expandirCasilleroButton.addEventListener("click", () => {
   console.log("expandirCasilleroButton");
   // Rotar elemento dentro del boton.
   iconoExpandirCasillero.classList.toggle("rotar-180");
-  
+
   if (evaluarAlturaDelCasillero) {
     casillero.style.height = "120px"; // Establecer una altura fija para contraer
     evaluarAlturaDelCasillero = false;

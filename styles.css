@@ -811,6 +811,65 @@ button {
   font-family: "Courier New", Courier, monospace;
   color: #fff;
 }
+.select-mode-container { 
+  box-shadow: 3px 3px 15px 1px #fff;
+
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 220px;
+  /* height: 0; */
+  height: 32px;
+  margin: 6rem 2rem;
+  justify-content: top;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+  border: none;
+  background-color: #ededed;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow: hidden;
+  transition: ease-in-out all .3s;
+}
+.selectGameMode {
+  display: flex;
+  height: 34px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+  border: none;
+  border-bottom: 1px solid;
+  background-color: #ededed;
+  font-weight: bold;
+}
+.selectGameMode:hover {
+  background-color: #8e806c;
+  transition: all 0.5s;
+}
+.elegir-modo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  gap: .5rem;
+  margin: .5rem 0;
+}
+.elegir-modo button {
+  width: 100%;
+  height: 32px;
+  border: none;
+  background-color: #387f91;
+  color: #fff;
+  transition: ease-in all .3s;
+}
+.elegir-modo button:hover {
+  background-color: #0a323c;
+  transition: ease-in .5s;
+}
 .startToPlay {
   display: flex;
   position: absolute;
@@ -818,7 +877,7 @@ button {
   right: 0;
   width: 220px;
   height: 65px;
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
   margin: 2rem;
   font-size: 32px;
   text-transform: uppercase;
@@ -834,7 +893,6 @@ button {
 .startToPlay:hover {
   background-color: #0a323c;
   transition: all 0.5s;
-  box-shadow: 3px 3px 15px 6px;
 }
 /* Seccion de Rangos */
 .mostrar-rango {
