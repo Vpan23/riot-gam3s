@@ -570,6 +570,9 @@ let guardarRangoText = [
 
 // Mostrar fase de Batalla.
 BATALLA.addEventListener("click", () => {
+  menuBatalla();
+});
+function menuBatalla() {
   console.log("batalla");
   PRINCIPAL.style.display = "none";
   mostrarBatalla.style.display = "flex";
@@ -582,8 +585,8 @@ BATALLA.addEventListener("click", () => {
   mostrarSelectorDeCampeones();
 
   // funcion para empezar las batallas.
-  startToPlay();
-});
+  btnExpandModeContainer.textContent = "Selección Automática ↺";
+}
 
 // Funcion de mostrar los modos de juegos.
 let evaluarModoDeJuego = false;
@@ -603,47 +606,259 @@ function evaluarModo() {
     evaluarModoDeJuego = true;
   }
 }
-const selectGameMode = document.querySelector('.selectGameMode');
 modeButtons.forEach(function (boton) {
   boton.addEventListener("click", () => {
     console.log(`Traspasar el id: ${boton.id}`);
     modoDeJuego = boton.id;
     evaluarModoDeJuego = true;
-    selectGameMode.textContent = modoDeJuego;
+    btnExpandModeContainer.textContent = modoDeJuego;
     evaluarModo();
   });
 });
 
 const buttonStartToPlay = document.querySelector(".startToPlay");
-const mostrarEstadioDeCombate = document.querySelector('.mostrarEstadioDeCombate');
+const mostrarEstadioDeCombate = document.querySelector(
+  ".mostrarEstadioDeCombate"
+);
 
 buttonStartToPlay.addEventListener("click", () => {
   mostrarBatalla.style.display = "none";
-  mostrarEstadioDeCombate.style.display = 'flex';
+  mostrarEstadioDeCombate.style.display = "flex";
+  console.log(modoDeJuego);
   // Entrada a la seccion de encontrar batalla.
   startToPlay();
 });
+
+const goBackPanelDeBatalla = document.querySelector(".goBack-PanelDeBatalla");
+let nivelDeFaseActual = 1;
+function crearPanelDeNiveles() {
+  // Limpiar Pantalla.
+  mostrarEstadioDeCombate.textContent = "";
+  // Creamos un panel donde estaran ubicados los niveles.
+  const crearContenedorDeFases = document.createElement("div");
+  crearContenedorDeFases.className = "crearContenedorDeFases";
+  // Crearemos cada nivel.
+  const crearNiveles = document.createElement("div");
+  crearNiveles.className = "crearNiveles";
+  mostrarEstadioDeCombate.appendChild(crearContenedorDeFases);
+  mostrarEstadioDeCombate.style.backgroundColor = "#0a323c";
+  mostrarEstadioDeCombate.appendChild(goBackPanelDeBatalla);
+  // Boton Para ir hacia Atras.
+  goBackPanelDeBatalla.addEventListener("click", () => {
+    menuBatalla();
+  });
+  // Crear un Encabezado que remarque el Nivel de la Fase.
+  const crearNumeroDeFase = document.createElement("h1");
+  crearNumeroDeFase.className = "tituloDeFase";
+  crearNumeroDeFase.textContent = `Fase ${nivelDeFaseActual}`;
+  crearContenedorDeFases.appendChild(crearNumeroDeFase);
+  // Crear un contenedor para guardar dentro los niveles.
+  const crearContenedorDeNiveles = document.createElement("div");
+  crearContenedorDeNiveles.className = "crearContenedorDeNiveles";
+  crearContenedorDeFases.appendChild(crearContenedorDeNiveles);
+  let nivel = 1;
+
+  //Crear cada Nivel colocado en nuestro contenedor.
+  generarNivelModoHistoria.forEach(function () {
+    // Crear Cada Nivel.
+    console.log("Crear Casilla de nivel");
+    const crearCasillaDeNivel = document.createElement("button");
+    crearCasillaDeNivel.className = "crearCasillaDeNivel";
+    crearCasillaDeNivel.textContent = nivel.toString(); // Usar el valor del botón desde tu arreglo.
+    crearContenedorDeNiveles.appendChild(crearCasillaDeNivel);
+    nivel += 1;
+
+    crearCasillaDeNivel.addEventListener("click", () => {
+      console.log(crearCasillaDeNivel.textContent); // Obtener el valor del botón al hacer clic
+    });
+  });
+}
+
+// Escuchar el Nivel del Jugador Tocado.
+// generarNivelModoHistoria.forEach(function (boton) {
+
+// });
+
+let generarNivelModoHistoria = [
+  {
+    nivel: 1,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 2,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 3,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 4,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 5,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 6,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 7,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 8,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 9,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 10,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 1,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 2,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 3,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 4,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 5,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 6,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 7,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 8,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 9,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 10,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 1,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 2,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 3,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 4,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 5,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 6,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 7,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 8,
+    enemigos: "slime",
+    cantidad: 1,
+  },
+  {
+    nivel: 9,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+  {
+    nivel: 10,
+    enemigos: "slime",
+    cantidad: 2,
+  },
+];
+
+let generarEnemigosModoHistoria = [
+  {
+    nombre: "slime",
+    atributos: [1, 1, 1, 1, 1],
+    level: 1,
+    img: "assets/Enemies/slime-level1.png",
+  },
+];
 
 function startToPlay() {
   // Mostrar carga de pantalla
   mostrarBusquedaDeEnemigos();
 
-  selectGameMode.textContent = "Selección Automática";
-
-  buttonStartToPlay.addEventListener("click", () => {
-    console.log(modoDeJuego);
-  });
+  setTimeout(() => {
+    // Entrar a los niveles luego de la animacion.
+    crearPanelDeNiveles();
+  }, 3000);
 }
-const barraDeCargaEnCombate = document.querySelector('.barraDeCargaEnCombate');
+const barraDeCargaEnCombate = document.querySelector(".barraDeCargaEnCombate");
 // Barra de Busqueda.
 function mostrarBusquedaDeEnemigos() {
   console.log("cargando");
-  barraDeCargaEnCombate.textContent = '';
+  barraDeCargaEnCombate.textContent = "Cargando...";
 }
 // Combate.
 function mostrarCombate() {
   // Ocutaremos el menu de batalla y entraremos al de combate.
-  
 }
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");
@@ -694,8 +909,6 @@ function mostrarSelectorDeCampeones() {
       });
     }
   });
-
-  console.log(contadorPersonajesEnCasilla);
 
   if (contadorPersonajesEnCasilla == 0) {
     // Crear elemento de mensaje al no tener ningún campeón disponible.

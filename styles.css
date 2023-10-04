@@ -1022,6 +1022,46 @@ button {
   height: 520px;
   background-color: #b9b9b9;
 }
+/* Creacion del Panel de Niveles */
+.crearContenedorDeFases {
+  width: 400px;
+  height: 380px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.tituloDeFase {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+.crearContenedorDeNivel {
+  width: 100%;
+  gap: 0.25rem;
+}
+.crearCasillaDeNivel {
+  width: 45px;
+  height: 45px;
+  background-color: #0a323c;
+  color: #fff;
+  border: none;
+  margin: .5rem;
+  border-radius: 6px;
+}
+.crearCasillaDeNivel:hover {
+  transition: all ease-in-out .3s;
+  font-size: 16px;
+  font-weight: 700;
+  scale: 1.1;
+  border-radius: 10px;
+  background-color: #17677b;
+}
 
 @media screen and (max-width: 768px) {
   #playBground {
