@@ -1013,7 +1013,7 @@ button {
   transition: 0.75s ease; /* Agrega una transición suave */
 }
 /* Entrar en Combate */
-.mostrarEstadioDeCombate {
+.mostrarPanelDeCombate {
   position: absolute;
   display: none;
   justify-content: center;
@@ -1061,6 +1061,15 @@ button {
   scale: 1.1;
   border-radius: 10px;
   background-color: #17677b;
+}
+.mostrarEstadioDeCombate {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background-color: #b9b9b9;
 }
 
 @media screen and (max-width: 768px) {

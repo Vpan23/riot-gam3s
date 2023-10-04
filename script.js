@@ -617,13 +617,11 @@ modeButtons.forEach(function (boton) {
 });
 
 const buttonStartToPlay = document.querySelector(".startToPlay");
-const mostrarEstadioDeCombate = document.querySelector(
-  ".mostrarEstadioDeCombate"
-);
+const mostrarPanelDeCombate = document.querySelector(".mostrarPanelDeCombate");
 
 buttonStartToPlay.addEventListener("click", () => {
   mostrarBatalla.style.display = "none";
-  mostrarEstadioDeCombate.style.display = "flex";
+  mostrarPanelDeCombate.style.display = "flex";
   console.log(modoDeJuego);
   // Entrada a la seccion de encontrar batalla.
   startToPlay();
@@ -633,16 +631,16 @@ const goBackPanelDeBatalla = document.querySelector(".goBack-PanelDeBatalla");
 let nivelDeFaseActual = 1;
 function crearPanelDeNiveles() {
   // Limpiar Pantalla.
-  mostrarEstadioDeCombate.textContent = "";
+  mostrarPanelDeCombate.textContent = "";
   // Creamos un panel donde estaran ubicados los niveles.
   const crearContenedorDeFases = document.createElement("div");
   crearContenedorDeFases.className = "crearContenedorDeFases";
   // Crearemos cada nivel.
   const crearNiveles = document.createElement("div");
   crearNiveles.className = "crearNiveles";
-  mostrarEstadioDeCombate.appendChild(crearContenedorDeFases);
-  mostrarEstadioDeCombate.style.backgroundColor = "#0a323c";
-  mostrarEstadioDeCombate.appendChild(goBackPanelDeBatalla);
+  mostrarPanelDeCombate.appendChild(crearContenedorDeFases);
+  mostrarPanelDeCombate.style.backgroundColor = "#0a323c";
+  mostrarPanelDeCombate.appendChild(goBackPanelDeBatalla);
   // Boton Para ir hacia Atras.
   goBackPanelDeBatalla.addEventListener("click", () => {
     menuBatalla();
@@ -657,7 +655,7 @@ function crearPanelDeNiveles() {
   crearContenedorDeNiveles.className = "crearContenedorDeNiveles";
   crearContenedorDeFases.appendChild(crearContenedorDeNiveles);
   let nivel = 1;
-
+  let obtenerNumeroDelNivel;
   //Crear cada Nivel colocado en nuestro contenedor.
   generarNivelModoHistoria.forEach(function () {
     // Crear Cada Nivel.
@@ -670,14 +668,35 @@ function crearPanelDeNiveles() {
 
     crearCasillaDeNivel.addEventListener("click", () => {
       console.log(crearCasillaDeNivel.textContent); // Obtener el valor del botón al hacer clic
+      obtenerNumeroDelNivel = crearCasillaDeNivel.textContent;
+      iniciarBatallaSegunNivel(obtenerNumeroDelNivel);
     });
   });
 }
 
-// Escuchar el Nivel del Jugador Tocado.
-// generarNivelModoHistoria.forEach(function (boton) {
+// Crear el mapa para Combatir.
+const mostrarEstadioDeCombate = document.querySelector(
+  ".mostrarEstadioDeCombate"
+);
 
-// });
+// Escuchar el Nivel del Jugador Tocado.
+function iniciarBatallaSegunNivel(nivelRecibido) {
+  console.log(`Estas en el nivel: ${nivelRecibido}`);
+  mostrarPanelDeCombate.style.display = "none";
+  mostrarEstadioDeCombate.style.display = "flex";
+
+  // Mostrar una entrada para presentar antes de cada Batalla.
+  mostrarEntrada();
+
+  // Encontrar el enemigo segun nivel.
+  console.log(generarNivelModoHistoria[nivelRecibido - 1]);
+
+  // 
+}
+
+function mostrarEntrada() {
+  //Colocar la Animacion Antes de Empezar.
+}
 
 let generarNivelModoHistoria = [
   {
