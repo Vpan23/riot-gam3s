@@ -1076,7 +1076,10 @@ button {
 .estadioUsuario {
   width: 50%;
   height: 100%;
-  background: #00000069;
+  background: #a19e9e69;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .estadioEnemigo {
   width: 50%;
@@ -1090,6 +1093,10 @@ button {
   width: 100px;
   height: 100px;  
 }
+.formaDelUsuario {
+  width: 100px;
+  height: 100px;  
+}
 .crearContenedorDelEnemigo {
   width: 125px;
   height: 200px;
@@ -1099,7 +1106,26 @@ button {
   flex-wrap: wrap;
   flex-direction: column;
 }
+.crearContenedorDelUsuario {
+  width: 125px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 .crearContenedorDeAtributosEnemigo {
+  width: 100%;
+  background-color: #ffffff4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.crearContenedorDeAtributosUsuario {
   width: 100%;
   background-color: #ffffff4a;
   display: flex;
@@ -1123,6 +1149,16 @@ button {
   background-color: red;
 }
 .barraDeManaDelEnemigo {
+  background-color: blue;
+  width: 100%;
+  height: 50%;
+}
+.barraDeVidaDelUsuario {
+  width: 100%;
+  height: 50%;
+  background-color: red;
+}
+.barraDeManaDelUsuario {
   background-color: blue;
   width: 100%;
   height: 50%;

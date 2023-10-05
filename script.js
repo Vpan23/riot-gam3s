@@ -340,28 +340,31 @@ const AgregarIconosDelAtributo = [
 let personajes = [
   {
     nombre: "lux",
+    nivel: 1,
     atributos: [100, 20, 30, 30, 10],
     numero: 1,
     coste: 100,
-    estado: false,
+    estado: true,
     img: "assets/lux.png",
     uso: "desactivado",
   },
   {
     nombre: "ashe",
+    nivel: 1,
     atributos: [120, 60, 30, 30, 30],
     numero: 2,
     coste: 150,
-    estado: false,
+    estado: true,
     img: "assets/ashe.png",
     uso: "desactivado",
   },
   {
     nombre: "miss",
+    nivel: 1,
     atributos: [150, 50, 50, 50, 50],
     numero: 3,
     coste: 250,
-    estado: false,
+    estado: true,
     img: "assets/missfortune.png",
     uso: "desactivado",
   },
@@ -620,12 +623,29 @@ const buttonStartToPlay = document.querySelector(".startToPlay");
 const mostrarPanelDeCombate = document.querySelector(".mostrarPanelDeCombate");
 
 buttonStartToPlay.addEventListener("click", () => {
-  mostrarBatalla.style.display = "none";
-  mostrarPanelDeCombate.style.display = "flex";
-  console.log(modoDeJuego);
-  // Entrada a la seccion de encontrar batalla.
-  startToPlay();
+  evaluarCampeonEnUso();
 });
+
+function evaluarCampeonEnUso() {
+  let personajeActivado;
+  personajes.forEach(function (personaje) {
+    if (personaje.uso === "activado") {
+      personajeActivado = personaje.nombre;
+      console.log(personajeActivado);
+      // Entrar a Batalla con el Personaje Seleccinado
+      mostrarBatalla.style.display = "none";
+      mostrarPanelDeCombate.style.display = "flex";
+      console.log(modoDeJuego);
+      // Entrada a la seccion de encontrar batalla.
+      startToPlay();
+    }
+    {
+      console.log(
+        "No contienes ningun personaje activo, por favor Vuelva a Intentarlo!"
+      );
+    }
+  });
+}
 
 const goBackPanelDeBatalla = document.querySelector(".goBack-PanelDeBatalla");
 let nivelDeFaseActual = 1;
@@ -693,6 +713,50 @@ function iniciarBatallaSegunNivel(nivelRecibido) {
 
   // Mostrar Enemigo.
   mostrarEnemigos(nivelRecibido);
+  // Mostrar Personaje del Usuario.
+  mostrarUsuario(nivelRecibido);
+}
+
+// Obtener el Estadio del Usuario. Para referir la posicion.
+const estadioUsuario = document.querySelector(".estadioUsuario");
+function mostrarUsuario(usuario) {
+  usuario -= 1;
+  // Crear contenedor para todo el enemigo.
+  const crearContenedorDelUsuario = document.createElement("div");
+  crearContenedorDelUsuario.className = "crearContenedorDelUsuario";
+  estadioUsuario.appendChild(crearContenedorDelUsuario);
+
+  // Asignarle su nombre dentro del contenedor
+  const asignarNombreDeUsuario = document.createElement("h2");
+  asignarNombreDeUsuario.className = "nombreDelUsuario";
+  asignarNombreDeUsuario.textContent = personajes[usuario].nombre;
+  crearContenedorDelUsuario.appendChild(asignarNombreDeUsuario);
+  // Asignarle el nivel del usuario.
+  const asignarNivelDeUsuario = document.createElement("span");
+  asignarNivelDeUsuario.className = "nivelDelUsuario";
+  asignarNivelDeUsuario.textContent = `Lvl. ${personajes[usuario].nivel}`;
+  crearContenedorDelUsuario.appendChild(asignarNivelDeUsuario);
+
+  // Crear un contenedor para los atributos y el nombre del usuario.
+  const crearContenedorDeAtributosUsuario = document.createElement("div");
+  crearContenedorDeAtributosUsuario.className =
+    "crearContenedorDeAtributosUsuario";
+  crearContenedorDelUsuario.appendChild(crearContenedorDeAtributosUsuario);
+  // Crear una barra de vida.
+  const crearBarraDeVidaDelUsuario = document.createElement("div");
+  crearBarraDeVidaDelUsuario.className = "barraDeVidaDelUsuario";
+  crearContenedorDeAtributosUsuario.appendChild(crearBarraDeVidaDelUsuario);
+  // Crear una Barra de Mana.
+  const crearBarraDeManaDelUsuario = document.createElement("div");
+  crearBarraDeManaDelUsuario.className = "barraDeManaDelUsuario";
+  crearContenedorDeAtributosUsuario.appendChild(crearBarraDeManaDelUsuario);
+
+  // Crear los elementos de imagen y darle una clase.
+  const crearFormaDelUsuario = document.createElement("img");
+  crearFormaDelUsuario.className = "formaDelUsuario";
+  crearFormaDelUsuario.src = personajes[usuario].img;
+  console.log("Se logro obtener el nivel del usuario " + usuario);
+  crearContenedorDelUsuario.appendChild(crearFormaDelUsuario);
 }
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
@@ -750,6 +814,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -761,6 +826,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -772,6 +838,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -783,6 +850,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -794,6 +862,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -805,6 +874,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -816,6 +886,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -827,6 +898,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -838,6 +910,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -849,6 +922,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -860,6 +934,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -871,6 +946,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -882,6 +958,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -893,6 +970,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -904,6 +982,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -915,6 +994,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -926,6 +1006,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -937,6 +1018,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -948,6 +1030,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -959,6 +1042,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -970,6 +1054,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -981,6 +1066,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -992,6 +1078,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1003,6 +1090,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1014,6 +1102,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1025,6 +1114,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1036,6 +1126,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1047,6 +1138,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1058,6 +1150,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1069,6 +1162,7 @@ let generarNivelModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1081,6 +1175,7 @@ let generarEnemigosModoHistoria = [
     atributos: {
       vida: 100,
       mana: 50,
+      ataque: 1,
     },
     img: "assets/Enemies/slime-level1.png",
   },
@@ -1142,15 +1237,22 @@ function mostrarSelectorDeCampeones() {
 
       // Funcion para devolver el boton obtenido del personaje clickeado.
       crearCasillaSelector.addEventListener("click", () => {
-        if (personaje.uso === "activado") {
-          personaje.uso = "desactivado";
-          crearCasillaSelector.classList.remove("activado");
-          console.log(crearCasillaSelector.className);
-        } else {
-          //En caso de que sea desactivado.
-          personaje.uso = "activado";
-          crearCasillaSelector.classList.add("activado");
-        }
+        personajes.forEach(function(remover) {
+        crearCasillaSelector.classList.remove("activado");
+        remover.uso = 'desactivado';
+        })
+        // if (personaje.uso === "activado") {
+        //   personaje.uso = "desactivado";
+        //   crearCasillaSelector.classList.remove("activado");
+        //   console.log(crearCasillaSelector.className);
+        // } else {
+        //   //En caso de que sea desactivado.
+        //   personaje.uso = "activado";
+        //   crearCasillaSelector.classList.add("activado");
+        // }
+        console.log("Obtener el nombre del personaje " + personaje.nombre);
+        personaje.uso = 'activado';
+        crearCasillaSelector.classList.add("activado");
       });
     }
   });
