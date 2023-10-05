@@ -1070,6 +1070,62 @@ button {
   width: 100%;
   height: 520px;
   background-color: #b9b9b9;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+.estadioUsuario {
+  width: 50%;
+  height: 100%;
+  background: #00000069;
+}
+.estadioEnemigo {
+  width: 50%;
+  height: 100%;
+  background: #b0323269;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formaDelEnemigo {
+  width: 100px;
+  height: 100px;  
+}
+.crearContenedorDelEnemigo {
+  width: 125px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.crearContenedorDeAtributosEnemigo {
+  width: 100%;
+  background-color: #ffffff4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.nombreDelEnemigo {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.nivelDelEnemigo {
+  font-size: medium;
+  font-weight: bold;
+}
+.barraDeVidaDelEnemigo {
+  width: 100%;
+  height: 50%;
+  background-color: red;
+}
+.barraDeManaDelEnemigo {
+  background-color: blue;
+  width: 100%;
+  height: 50%;
 }
 
 @media screen and (max-width: 768px) {

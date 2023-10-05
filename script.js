@@ -691,7 +691,50 @@ function iniciarBatallaSegunNivel(nivelRecibido) {
   // Encontrar el enemigo segun nivel.
   console.log(generarNivelModoHistoria[nivelRecibido - 1]);
 
-  // 
+  // Mostrar Enemigo.
+  mostrarEnemigos(nivelRecibido);
+}
+
+// Obtener el Estadio Enemigo. Para referir la posicion.
+const estadioEnemigo = document.querySelector(".estadioEnemigo");
+function mostrarEnemigos(enemigo) {
+  // Crear contenedor para todo el enemigo.
+  const crearContenedorDelEnemigo = document.createElement("div");
+  crearContenedorDelEnemigo.className = "crearContenedorDelEnemigo";
+  estadioEnemigo.appendChild(crearContenedorDelEnemigo);
+
+  // Asignarle su nombre dentro del contenedor
+  const asignarNombreDeEnemigo = document.createElement("h2");
+  asignarNombreDeEnemigo.className = "nombreDelEnemigo";
+  asignarNombreDeEnemigo.textContent =
+    generarNivelModoHistoria[enemigo].enemigo;
+  crearContenedorDelEnemigo.appendChild(asignarNombreDeEnemigo);
+  // Asignarle el nivel del enemigo.
+  const asignarNivelDeEnemigo = document.createElement("span");
+  asignarNivelDeEnemigo.className = "nivelDelEnemigo";
+  asignarNivelDeEnemigo.textContent = `Lvl. ${generarNivelModoHistoria[enemigo]["nivel del enemigo"]}`;
+  crearContenedorDelEnemigo.appendChild(asignarNivelDeEnemigo);
+
+  // Crear un contenedor para los atributos y el nombre del enemigo.
+  const crearContenedorDeAtributosEnemigo = document.createElement("div");
+  crearContenedorDeAtributosEnemigo.className =
+    "crearContenedorDeAtributosEnemigo";
+  crearContenedorDelEnemigo.appendChild(crearContenedorDeAtributosEnemigo);
+  // Crear una barra de vida y de mana del enemigo.
+  const crearBarraDeVidaDelEnemigo = document.createElement("div");
+  crearBarraDeVidaDelEnemigo.className = "barraDeVidaDelEnemigo";
+  crearContenedorDeAtributosEnemigo.appendChild(crearBarraDeVidaDelEnemigo);
+  // Barra de Mana
+  const crearBarraDeManaDelEnemigo = document.createElement("div");
+  crearBarraDeManaDelEnemigo.className = "barraDeManaDelEnemigo";
+  crearContenedorDeAtributosEnemigo.appendChild(crearBarraDeManaDelEnemigo);
+
+  // Crear los elementos de imagen y darle una clase.
+  const crearFormaDelEnemigo = document.createElement("img");
+  crearFormaDelEnemigo.className = "formaDelEnemigo";
+  crearFormaDelEnemigo.src = generarNivelModoHistoria[enemigo].img;
+  console.log("Se logro obtener el nivel del enemigo " + enemigo);
+  crearContenedorDelEnemigo.appendChild(crearFormaDelEnemigo);
 }
 
 function mostrarEntrada() {
@@ -701,161 +744,344 @@ function mostrarEntrada() {
 let generarNivelModoHistoria = [
   {
     nivel: 1,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 2,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 3,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 4,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 5,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 6,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 7,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 8,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 9,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 10,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 1,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 2,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 3,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 4,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 5,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 6,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 7,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 8,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 9,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 10,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 1,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 2,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 3,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 4,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 5,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 6,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 7,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 8,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 9,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
   {
     nivel: 10,
-    enemigos: "slime",
+    enemigo: "slime",
+    "nivel del enemigo": 1,
     cantidad: 2,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
+    img: "assets/Enemies/slime-level1.png",
   },
 ];
 
 let generarEnemigosModoHistoria = [
   {
     nombre: "slime",
-    atributos: [1, 1, 1, 1, 1],
     level: 1,
+    atributos: {
+      vida: 100,
+      mana: 50,
+    },
     img: "assets/Enemies/slime-level1.png",
   },
 ];
