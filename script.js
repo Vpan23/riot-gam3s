@@ -347,6 +347,29 @@ let personajes = [
     estado: true,
     img: "assets/lux.png",
     uso: "desactivado",
+    habilidades: {
+      pasiva: 'ataque potenciado',
+      Q: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      W: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      E: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      R: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+    }
   },
   {
     nombre: "ashe",
@@ -357,6 +380,29 @@ let personajes = [
     estado: true,
     img: "assets/ashe.png",
     uso: "desactivado",
+    habilidades: {
+      pasiva: 'ataque potenciado',
+      Q: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      W: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      E: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      R: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+    }
   },
   {
     nombre: "miss",
@@ -367,6 +413,29 @@ let personajes = [
     estado: true,
     img: "assets/missfortune.png",
     uso: "desactivado",
+    habilidades: {
+      pasiva: 'ataque potenciado',
+      Q: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      W: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      E: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+      R: {
+        info: 'Aturdir',
+        dano: 10,
+        img: 'assets/'
+      },
+    }
   },
 ];
 const casa_lux = document.getElementById("lux");
