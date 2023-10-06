@@ -344,32 +344,32 @@ let personajes = [
     atributos: [100, 20, 30, 30, 10],
     numero: 1,
     coste: 100,
-    estado: true,
+    estado: false,
     img: "assets/lux.png",
     uso: "desactivado",
     habilidades: {
-      pasiva: 'ataque potenciado',
+      pasiva: "ataque potenciado",
       Q: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       W: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       E: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       R: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
-    }
+    },
   },
   {
     nombre: "ashe",
@@ -377,32 +377,32 @@ let personajes = [
     atributos: [120, 60, 30, 30, 30],
     numero: 2,
     coste: 150,
-    estado: true,
+    estado: false,
     img: "assets/ashe.png",
     uso: "desactivado",
     habilidades: {
-      pasiva: 'ataque potenciado',
+      pasiva: "ataque potenciado",
       Q: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       W: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       E: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       R: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
-    }
+    },
   },
   {
     nombre: "miss",
@@ -410,32 +410,32 @@ let personajes = [
     atributos: [150, 50, 50, 50, 50],
     numero: 3,
     coste: 250,
-    estado: true,
+    estado: false,
     img: "assets/missfortune.png",
     uso: "desactivado",
     habilidades: {
-      pasiva: 'ataque potenciado',
+      pasiva: "ataque potenciado",
       Q: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       W: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       E: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
       R: {
-        info: 'Aturdir',
+        info: "Aturdir",
         dano: 10,
-        img: 'assets/'
+        img: "assets/",
       },
-    }
+    },
   },
 ];
 const casa_lux = document.getElementById("lux");
@@ -467,7 +467,6 @@ function entrarCasa() {
       const divPersonaje = document.createElement("div");
       divPersonaje.className = "carta-personaje";
       divPersonaje.id = `carta-${personaje.nombre}`;
-      console.log(divPersonaje.id);
       // Agrega el título del personaje
       const titulo = document.createElement("h2");
       titulo.textContent = personaje.nombre;
@@ -479,8 +478,6 @@ function entrarCasa() {
       imagen.className = "imgCarta";
       imagen.src = personaje.img;
       divPersonaje.appendChild(imagen);
-
-      // Agrega el texto del personaje
 
       let i = 0;
       // Agregar las imagenes del Atributo.
@@ -641,11 +638,13 @@ let guardarRangoText = [
 ];
 
 // Mostrar fase de Batalla.
+let nivelDelJugador = 1;
 BATALLA.addEventListener("click", () => {
   menuBatalla();
 });
 function menuBatalla() {
   console.log("batalla");
+  mostrarPanelDeCombate.style.display = "none";
   PRINCIPAL.style.display = "none";
   mostrarBatalla.style.display = "flex";
   mostrarNombreUsuario.innerHTML = `1. ${userName} ${puntajeRango}LP`;
@@ -695,29 +694,31 @@ buttonStartToPlay.addEventListener("click", () => {
   evaluarCampeonEnUso();
 });
 
+let personajeActivado;
 function evaluarCampeonEnUso() {
-  let personajeActivado;
   personajes.forEach(function (personaje) {
+    console.log(personaje.uso);
     if (personaje.uso === "activado") {
       personajeActivado = personaje.nombre;
       console.log(personajeActivado);
+      console.log(modoDeJuego);
+      // Entrada a la seccion de encontrar batalla.
       // Entrar a Batalla con el Personaje Seleccinado
       mostrarBatalla.style.display = "none";
       mostrarPanelDeCombate.style.display = "flex";
-      console.log(modoDeJuego);
-      // Entrada a la seccion de encontrar batalla.
       startToPlay();
     }
-    {
-      console.log(
-        "No contienes ningun personaje activo, por favor Vuelva a Intentarlo!"
-      );
-    }
   });
+  console.log(
+    "No contienes ningun personaje activo, por favor Vuelva a Intentarlo!"
+  );
 }
 
 const goBackPanelDeBatalla = document.querySelector(".goBack-PanelDeBatalla");
 let nivelDeFaseActual = 1;
+goBackPanelDeBatalla.addEventListener("click", () => {
+  menuBatalla();
+});
 function crearPanelDeNiveles() {
   // Limpiar Pantalla.
   mostrarPanelDeCombate.textContent = "";
@@ -731,9 +732,7 @@ function crearPanelDeNiveles() {
   mostrarPanelDeCombate.style.backgroundColor = "#0a323c";
   mostrarPanelDeCombate.appendChild(goBackPanelDeBatalla);
   // Boton Para ir hacia Atras.
-  goBackPanelDeBatalla.addEventListener("click", () => {
-    menuBatalla();
-  });
+
   // Crear un Encabezado que remarque el Nivel de la Fase.
   const crearNumeroDeFase = document.createElement("h1");
   crearNumeroDeFase.className = "tituloDeFase";
@@ -779,53 +778,78 @@ function iniciarBatallaSegunNivel(nivelRecibido) {
 
   // Encontrar el enemigo segun nivel.
   console.log(generarNivelModoHistoria[nivelRecibido - 1]);
+  console.log(`Personaje Recibido: ${personajeActivado}`);
 
   // Mostrar Enemigo.
   mostrarEnemigos(nivelRecibido);
   // Mostrar Personaje del Usuario.
-  mostrarUsuario(nivelRecibido);
+  mostrarUsuario();
+}
+
+function mostrarEntrada() {
+  //Colocar la Animacion Antes de Empezar.
 }
 
 // Obtener el Estadio del Usuario. Para referir la posicion.
 const estadioUsuario = document.querySelector(".estadioUsuario");
-function mostrarUsuario(usuario) {
-  usuario -= 1;
-  // Crear contenedor para todo el enemigo.
-  const crearContenedorDelUsuario = document.createElement("div");
-  crearContenedorDelUsuario.className = "crearContenedorDelUsuario";
-  estadioUsuario.appendChild(crearContenedorDelUsuario);
+function mostrarUsuario() {
+  // Evaluar personaje escogido.
+  personajes.forEach(function (personaje) {
+    console.log(`Nombre del Personaje: ${personaje.nombre}`);
+    console.log(`Personaje Activo: ${personajeActivado}`);
+    // En caso de que el personaje activo coincida con el nombre del personaje entonces este creara su forma.
+    if (personaje.nombre === personajeActivado) {
+      // Crear contenedor para todo el enemigo.
+      const crearContenedorDelUsuario = document.createElement("div");
+      crearContenedorDelUsuario.className = "crearContenedorDelUsuario";
+      estadioUsuario.appendChild(crearContenedorDelUsuario);
 
-  // Asignarle su nombre dentro del contenedor
-  const asignarNombreDeUsuario = document.createElement("h2");
-  asignarNombreDeUsuario.className = "nombreDelUsuario";
-  asignarNombreDeUsuario.textContent = personajes[usuario].nombre;
-  crearContenedorDelUsuario.appendChild(asignarNombreDeUsuario);
-  // Asignarle el nivel del usuario.
-  const asignarNivelDeUsuario = document.createElement("span");
-  asignarNivelDeUsuario.className = "nivelDelUsuario";
-  asignarNivelDeUsuario.textContent = `Lvl. ${personajes[usuario].nivel}`;
-  crearContenedorDelUsuario.appendChild(asignarNivelDeUsuario);
+      // Asignarle su nombre dentro del contenedor
+      const asignarNombreDeUsuario = document.createElement("h2");
+      asignarNombreDeUsuario.className = "nombreDelUsuario";
+      asignarNombreDeUsuario.textContent = personaje.nombre;
+      crearContenedorDelUsuario.appendChild(asignarNombreDeUsuario);
+      // Asignarle el nivel del usuario.
+      const asignarNivelDeUsuario = document.createElement("span");
+      asignarNivelDeUsuario.className = "nivelDelUsuario";
+      asignarNivelDeUsuario.textContent = `Lvl. ${personaje.nivel}`;
+      crearContenedorDelUsuario.appendChild(asignarNivelDeUsuario);
 
-  // Crear un contenedor para los atributos y el nombre del usuario.
-  const crearContenedorDeAtributosUsuario = document.createElement("div");
-  crearContenedorDeAtributosUsuario.className =
-    "crearContenedorDeAtributosUsuario";
-  crearContenedorDelUsuario.appendChild(crearContenedorDeAtributosUsuario);
-  // Crear una barra de vida.
-  const crearBarraDeVidaDelUsuario = document.createElement("div");
-  crearBarraDeVidaDelUsuario.className = "barraDeVidaDelUsuario";
-  crearContenedorDeAtributosUsuario.appendChild(crearBarraDeVidaDelUsuario);
-  // Crear una Barra de Mana.
-  const crearBarraDeManaDelUsuario = document.createElement("div");
-  crearBarraDeManaDelUsuario.className = "barraDeManaDelUsuario";
-  crearContenedorDeAtributosUsuario.appendChild(crearBarraDeManaDelUsuario);
+      // Crear un contenedor para los atributos y el nombre del usuario.
+      const crearContenedorDeAtributosUsuario = document.createElement("div");
+      crearContenedorDeAtributosUsuario.className =
+        "crearContenedorDeAtributosUsuario";
+      crearContenedorDelUsuario.appendChild(crearContenedorDeAtributosUsuario);
+      // Crear una barra de vida.
+      const crearBarraDeVidaDelUsuario = document.createElement("div");
+      crearBarraDeVidaDelUsuario.className = "barraDeVidaDelUsuario";
+      crearContenedorDeAtributosUsuario.appendChild(crearBarraDeVidaDelUsuario);
+      // Crear una Barra de Mana.
+      const crearBarraDeManaDelUsuario = document.createElement("div");
+      crearBarraDeManaDelUsuario.className = "barraDeManaDelUsuario";
+      crearContenedorDeAtributosUsuario.appendChild(crearBarraDeManaDelUsuario);
 
-  // Crear los elementos de imagen y darle una clase.
-  const crearFormaDelUsuario = document.createElement("img");
-  crearFormaDelUsuario.className = "formaDelUsuario";
-  crearFormaDelUsuario.src = personajes[usuario].img;
-  console.log("Se logro obtener el nivel del usuario " + usuario);
-  crearContenedorDelUsuario.appendChild(crearFormaDelUsuario);
+      // Crear los elementos de imagen y darle una clase.
+      const crearFormaDelUsuario = document.createElement("img");
+      crearFormaDelUsuario.className = "formaDelUsuario";
+      crearFormaDelUsuario.src = personaje.img;
+      console.log("Se logro obtener el nivel del usuario " + personaje);
+      crearContenedorDelUsuario.appendChild(crearFormaDelUsuario);
+
+      // Crear Casilla de Habilidades.
+      crearCasillaDeHabilidad(personaje);
+    } else {
+      console.log("no ha pasado");
+    }
+  });
+}
+// Funcion para Integrar los Botones de Habilidades de cada Personaje.
+function crearCasillaDeHabilidad(personaje) {
+  const crearContenedorDeHabilidad = document.createElement("div");
+  crearContenedorDeHabilidad.className = "ContenedorDeHabilidad";
+  const crearCasillaDeHabilidad = document.createElement("div");
+  crearCasillaDeHabilidad.className = "CasillaDeHabilidad";
+  mostrarEstadioDeCombate.appendChild(crearContenedorDeHabilidad);
 }
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
@@ -868,10 +892,6 @@ function mostrarEnemigos(enemigo) {
   crearFormaDelEnemigo.src = generarNivelModoHistoria[enemigo].img;
   console.log("Se logro obtener el nivel del enemigo " + enemigo);
   crearContenedorDelEnemigo.appendChild(crearFormaDelEnemigo);
-}
-
-function mostrarEntrada() {
-  //Colocar la Animacion Antes de Empezar.
 }
 
 let generarNivelModoHistoria = [
@@ -1251,6 +1271,9 @@ let generarEnemigosModoHistoria = [
 ];
 
 function startToPlay() {
+  // Entrar al modo historia.
+  console.log(`Accediendo al modo: ${modoDeJuego}`);
+  // Acceder al Modo Historia.
   // Mostrar carga de pantalla
   mostrarBusquedaDeEnemigos();
 
@@ -1258,6 +1281,24 @@ function startToPlay() {
     // Entrar a los niveles luego de la animacion.
     crearPanelDeNiveles();
   }, 3000);
+  if (modoDeJuego === "modo-historia") {
+  }
+  // Acceder al Modo Normal.
+  if (modoDeJuego === "modo-normal") {
+    mostrarBusquedaDeEnemigos();
+    setTimeout(() => {
+      // Entrar a las partidas normales luego de la animacion.
+      entrarEnPartidaNormal();
+    }, 3000);
+  }
+  // Acceder al Modo Normal.
+  if (modoDeJuego === "modo-clasificatoria") {
+    mostrarBusquedaDeEnemigos();
+    setTimeout(() => {
+      // Entrar a las partidas normales luego de la animacion.
+      entrarEnPartidaClasificatoria();
+    }, 3000);
+  }
 }
 const barraDeCargaEnCombate = document.querySelector(".barraDeCargaEnCombate");
 // Barra de Busqueda.
@@ -1266,8 +1307,15 @@ function mostrarBusquedaDeEnemigos() {
   barraDeCargaEnCombate.textContent = "Cargando...";
 }
 // Combate.
-function mostrarCombate() {
-  // Ocutaremos el menu de batalla y entraremos al de combate.
+// function mostrarCombate() {
+//   // Ocutaremos el menu de batalla y entraremos al de combate.
+// }
+
+function entrarEnPartidaNormal() {
+  console.log("Bienvenido a Partidas Normales");
+}
+function entrarEnPartidaClasificatoria() {
+  console.log("Bienvenido a Partidas Clasificatoria");
 }
 
 const casilleroVacioText = document.querySelector(".mostrarComoVacio");
@@ -1282,9 +1330,10 @@ const crearMensajeVacioCasilla = document.createElement("span");
 
 function mostrarSelectorDeCampeones() {
   casillero.innerHTML = "";
-
   let contadorPersonajesEnCasilla = 0;
-  personajes.forEach((personaje) => {
+  let personajeSeleccionado = -1; // Índice del personaje seleccionado (-1 significa ninguno).
+
+  personajes.forEach((personaje, index) => {
     if (personaje.estado) {
       contadorPersonajesEnCasilla += 1;
       // Volver a crear los elementos para cada personaje.
@@ -1298,33 +1347,39 @@ function mostrarSelectorDeCampeones() {
       crearCasillaSelector.appendChild(crearImagenCasilla);
 
       // Establecer la clase "activado" según el estado de uso del personaje.
-      if (personaje.uso === "activado") {
+      if (index === personajeSeleccionado) {
         crearCasillaSelector.classList.add("activado");
       }
 
       casillero.appendChild(crearCasillaSelector);
 
-      // Funcion para devolver el boton obtenido del personaje clickeado.
+      // Agregar un controlador de clic al botón.
       crearCasillaSelector.addEventListener("click", () => {
-        personajes.forEach(function(remover) {
-        crearCasillaSelector.classList.remove("activado");
-        remover.uso = 'desactivado';
-        })
-        // if (personaje.uso === "activado") {
-        //   personaje.uso = "desactivado";
-        //   crearCasillaSelector.classList.remove("activado");
-        //   console.log(crearCasillaSelector.className);
-        // } else {
-        //   //En caso de que sea desactivado.
-        //   personaje.uso = "activado";
-        //   crearCasillaSelector.classList.add("activado");
-        // }
-        console.log("Obtener el nombre del personaje " + personaje.nombre);
-        personaje.uso = 'activado';
-        crearCasillaSelector.classList.add("activado");
+        // Desactivar todos los personajes.
+        personajes.forEach((personaje) => {
+          personaje.uso = "desactivado";
+        });
+
+        // Activar el personaje seleccionado.
+        personaje.uso = "activado";
+        personajeSeleccionado = index;
+
+        // Actualizar la apariencia de los botones.
+        seleccionarCampeon();
       });
     }
   });
+  // Cambiar en caso de elegir a otro personaje.
+  function seleccionarCampeon() {
+    const botones = document.querySelectorAll(".crearCasillaSelector");
+    botones.forEach((boton, index) => {
+      if (index === personajeSeleccionado) {
+        boton.classList.add("activado");
+      } else {
+        boton.classList.remove("activado");
+      }
+    });
+  }
 
   if (contadorPersonajesEnCasilla == 0) {
     // Crear elemento de mensaje al no tener ningún campeón disponible.
