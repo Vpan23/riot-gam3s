@@ -352,22 +352,22 @@ let personajes = [
       Q: {
         info: "Aturdir",
         dano: 10,
-        img: "assets/",
+        img: "assets/Habilidades/Lux-Q.png",
       },
       W: {
         info: "Aturdir",
         dano: 10,
-        img: "assets/",
+        img: "assets/Habilidades/Lux-W.png",
       },
       E: {
         info: "Aturdir",
         dano: 10,
-        img: "assets/",
+        img: "assets/Habilidades/Lux-E.png",
       },
       R: {
         info: "Aturdir",
         dano: 10,
-        img: "assets/",
+        img: "assets/Habilidades/Lux-R.png",
       },
     },
   },
@@ -657,6 +657,11 @@ function menuBatalla() {
 
   // funcion para empezar las batallas.
   btnExpandModeContainer.textContent = "Selección Automática ↺";
+  if (nivelDelJugador < 15) {
+    botonClasificatoria.style.backgroundColor = "#0a323c";
+    botonClasificatoria.style.cursor = "no-drop";
+    botonClasificatoria.textContent = 'Clasificatoria🔒';
+  }
 }
 
 // Funcion de mostrar los modos de juegos.
@@ -665,6 +670,7 @@ let modoDeJuego = "modo-historia";
 const selectModeContainer = document.querySelector(".select-mode-container");
 const btnExpandModeContainer = document.querySelector(".selectGameMode");
 const modeButtons = document.querySelectorAll(".mode-button");
+const botonClasificatoria = document.getElementById("Modo - Clasificatoria");
 btnExpandModeContainer.addEventListener("click", () => {
   evaluarModo();
 });
@@ -691,7 +697,13 @@ const buttonStartToPlay = document.querySelector(".startToPlay");
 const mostrarPanelDeCombate = document.querySelector(".mostrarPanelDeCombate");
 
 buttonStartToPlay.addEventListener("click", () => {
-  evaluarCampeonEnUso();
+  if (modoDeJuego === "Modo - Clasificatoria") {
+  } else {
+    console.log("no pasa");
+  }
+  if (modoDeJuego === "Modo - Historia") {
+    evaluarCampeonEnUso();
+  }
 });
 
 let personajeActivado;
@@ -845,11 +857,15 @@ function mostrarUsuario() {
 }
 // Funcion para Integrar los Botones de Habilidades de cada Personaje.
 function crearCasillaDeHabilidad(personaje) {
+  // Crear un contenedor para guardar las habilidades.
   const crearContenedorDeHabilidad = document.createElement("div");
-  crearContenedorDeHabilidad.className = "ContenedorDeHabilidad";
+  crearContenedorDeHabilidad.className = "crearCasillaDeHabilidad";
+  // Crear cada casilla para cada habilidad.
   const crearCasillaDeHabilidad = document.createElement("div");
   crearCasillaDeHabilidad.className = "CasillaDeHabilidad";
+
   mostrarEstadioDeCombate.appendChild(crearContenedorDeHabilidad);
+  crearContenedorDeHabilidad.appendChild(crearCasillaDeHabilidad);
 }
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
