@@ -351,22 +351,22 @@ let personajes = [
       pasiva: "ataque potenciado",
       Q: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/Habilidades/Lux-Q.png",
       },
       W: {
-        info: "Aturdir",
-        dano: 10,
+        info: "Escudar",
+        daño: 10,
         img: "assets/Habilidades/Lux-W.png",
       },
       E: {
-        info: "Aturdir",
-        dano: 10,
+        info: "Area",
+        daño: 10,
         img: "assets/Habilidades/Lux-E.png",
       },
       R: {
-        info: "Aturdir",
-        dano: 10,
+        info: "Ultimate",
+        daño: 10,
         img: "assets/Habilidades/Lux-R.png",
       },
     },
@@ -384,22 +384,22 @@ let personajes = [
       pasiva: "ataque potenciado",
       Q: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       W: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       E: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       R: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
     },
@@ -417,22 +417,22 @@ let personajes = [
       pasiva: "ataque potenciado",
       Q: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       W: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       E: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
       R: {
         info: "Aturdir",
-        dano: 10,
+        daño: 10,
         img: "assets/",
       },
     },
@@ -660,7 +660,7 @@ function menuBatalla() {
   if (nivelDelJugador < 15) {
     botonClasificatoria.style.backgroundColor = "#0a323c";
     botonClasificatoria.style.cursor = "no-drop";
-    botonClasificatoria.textContent = 'Clasificatoria🔒';
+    botonClasificatoria.textContent = "Clasificatoria🔒";
   }
 }
 
@@ -794,6 +794,7 @@ function iniciarBatallaSegunNivel(nivelRecibido) {
 
   // Mostrar Enemigo.
   mostrarEnemigos(nivelRecibido);
+  nivelDelEnemigo = nivelRecibido;
   // Mostrar Personaje del Usuario.
   mostrarUsuario();
 }
@@ -866,6 +867,78 @@ function crearCasillaDeHabilidad(personaje) {
 
   mostrarEstadioDeCombate.appendChild(crearContenedorDeHabilidad);
   crearContenedorDeHabilidad.appendChild(crearCasillaDeHabilidad);
+
+  // Crearemos un contenedor para cada Habilidad.
+  let crearContenedorDeHabilidadQ = document.createElement("div");
+  let crearContenedorDeHabilidadW = document.createElement("div");
+  let crearContenedorDeHabilidadE = document.createElement("div");
+  let crearContenedorDeHabilidadR = document.createElement("div");
+  crearContenedorDeHabilidadQ.className = "ContenedorDeHabilidad";
+  crearContenedorDeHabilidadW.className = "ContenedorDeHabilidad";
+  crearContenedorDeHabilidadE.className = "ContenedorDeHabilidad";
+  crearContenedorDeHabilidadR.className = "ContenedorDeHabilidad";
+  // Configurar las propiedades del div
+  crearContenedorDeHabilidadQ.innerHTML = `
+        <button class='escucharBotonDeHabilidad' id="Q">
+        <img src="${personaje.habilidades.Q.img}" alt="${personaje.habilidades.Q.info}">
+        </button>
+        <p>${personaje.habilidades.Q.info}</p>
+        <p>Daño: ${personaje.habilidades.Q.daño}</p>
+      `;
+  crearContenedorDeHabilidadW.innerHTML = `
+        <button class='escucharBotonDeHabilidad' id="W">
+        <img src="${personaje.habilidades.W.img}" alt="${personaje.habilidades.W.info}">
+        </button>
+        <p>${personaje.habilidades.W.info}</p>
+        <p>Daño: ${personaje.habilidades.W.daño}</p>
+      `;
+  crearContenedorDeHabilidadE.innerHTML = `
+        <button class='escucharBotonDeHabilidad' id="E">
+        <img src="${personaje.habilidades.E.img}" alt="${personaje.habilidades.E.info}">
+        </button>
+        <p>${personaje.habilidades.E.info}</p>
+        <p>Daño: ${personaje.habilidades.E.daño}</p>
+      `;
+  crearContenedorDeHabilidadR.innerHTML = `
+        <button class='escucharBotonDeHabilidad' id="R">
+        <img src="${personaje.habilidades.R.img}" alt="${personaje.habilidades.R.info}">
+        </button>
+        <p>${personaje.habilidades.R.info}</p>
+        <p>Daño: ${personaje.habilidades.R.daño}</p>
+      `;
+
+  // Agregar el div al contenedor
+  crearCasillaDeHabilidad.appendChild(crearContenedorDeHabilidadQ);
+  crearCasillaDeHabilidad.appendChild(crearContenedorDeHabilidadW);
+  crearCasillaDeHabilidad.appendChild(crearContenedorDeHabilidadE);
+  crearCasillaDeHabilidad.appendChild(crearContenedorDeHabilidadR);
+
+  // Escuchar la habilidad tocada.
+  const escucharBotonDeHabilidad = document.querySelectorAll(
+    ".escucharBotonDeHabilidad"
+  );
+
+  escucharBotonDeHabilidad.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      console.log("funciona Habilidad");
+      const idDelBoton = boton.id; // Obtener el ID del botón que se hizo clic
+      console.log("ID del botón:", idDelBoton);
+      let dañoDelAtaque;
+      // Considerar si la habilidad es de Escudar, Daño, Ultimate, Area.
+      if (idDelBoton === "Q") {
+        console.log('Tirastes una Q');
+        dañoDelAtaque = personaje.habilidades.Q.daño;
+        generarNivelModoHistoria.
+      }
+      if (idDelBoton === "W") {
+      }
+      if (idDelBoton === "E") {
+      }
+      if (idDelBoton === "R") {
+      }
+      mostrarEnemigos();
+    });
+  });
 }
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
@@ -1304,7 +1377,7 @@ function startToPlay() {
     mostrarBusquedaDeEnemigos();
     setTimeout(() => {
       // Entrar a las partidas normales luego de la animacion.
-      entrarEnPartidaNormal();
+      entrarEnPartidañormal();
     }, 3000);
   }
   // Acceder al Modo Normal.
@@ -1327,7 +1400,7 @@ function mostrarBusquedaDeEnemigos() {
 //   // Ocutaremos el menu de batalla y entraremos al de combate.
 // }
 
-function entrarEnPartidaNormal() {
+function entrarEnPartidañormal() {
   console.log("Bienvenido a Partidas Normales");
 }
 function entrarEnPartidaClasificatoria() {

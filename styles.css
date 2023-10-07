@@ -811,7 +811,7 @@ button {
   font-family: "Courier New", Courier, monospace;
   color: #fff;
 }
-.select-mode-container { 
+.select-mode-container {
   box-shadow: 3px 3px 15px 1px #fff;
 
   display: flex;
@@ -830,7 +830,7 @@ button {
   flex-wrap: wrap;
   flex-direction: column;
   overflow: hidden;
-  transition: ease-in-out all .3s;
+  transition: ease-in-out all 0.3s;
 }
 .selectGameMode {
   display: flex;
@@ -855,8 +855,8 @@ button {
   flex-wrap: wrap;
   flex-direction: column;
   width: 100%;
-  gap: .5rem;
-  margin: .5rem 0;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
 }
 .elegir-modo button {
   width: 100%;
@@ -864,11 +864,11 @@ button {
   border: none;
   background-color: #387f91;
   color: #fff;
-  transition: ease-in all .3s;
+  transition: ease-in all 0.3s;
 }
 .elegir-modo button:hover {
   background-color: #0a323c;
-  transition: ease-in .5s;
+  transition: ease-in 0.5s;
 }
 .startToPlay {
   display: flex;
@@ -926,13 +926,13 @@ button {
   bottom: 0;
   left: 0;
   margin: 1rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: #0a1428;
-  gap: .5rem;
+  gap: 0.5rem;
   color: #fff;
 }
 .centro-de-botones-casillero {
@@ -942,7 +942,7 @@ button {
   width: 100%;
 }
 .centro-de-botones-casillero button {
-  padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
   border: none;
   background: #42a7a5;
   font-size: 12px;
@@ -950,7 +950,7 @@ button {
   font-weight: 700;
 }
 .centro-de-botones-casillero button:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .contenedor-de-casillas {
   display: flex;
@@ -959,7 +959,7 @@ button {
   width: 400px;
   height: 120px;
   background-color: #c5c3c3;
-  transition:  0.3s ease;
+  transition: 0.3s ease;
   padding: 1rem 1.5rem;
 }
 .mostrarComoVacio {
@@ -1051,11 +1051,11 @@ button {
   background-color: #0a323c;
   color: #fff;
   border: none;
-  margin: .5rem;
+  margin: 0.5rem;
   border-radius: 6px;
 }
 .crearCasillaDeNivel:hover {
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
   font-size: 16px;
   font-weight: 700;
   scale: 1.1;
@@ -1070,10 +1070,10 @@ button {
   width: 100%;
   height: 520px;
   background-color: #b9b9b9;
-  font-family: 'Courier New', Courier, monospace;
-
+  font-family: "Courier New", Courier, monospace;
 }
 .estadioUsuario {
+  padding-bottom: 4rem;
   width: 50%;
   height: 100%;
   background: #a19e9e69;
@@ -1082,6 +1082,7 @@ button {
   align-items: center;
 }
 .estadioEnemigo {
+  padding-bottom: 4rem;
   width: 50%;
   height: 100%;
   background: #b0323269;
@@ -1091,11 +1092,11 @@ button {
 }
 .formaDelEnemigo {
   width: 100px;
-  height: 100px;  
+  height: 100px;
 }
 .formaDelUsuario {
   width: 100px;
-  height: 100px;  
+  height: 100px;
 }
 .crearContenedorDelEnemigo {
   width: 125px;
@@ -1139,6 +1140,10 @@ button {
   text-transform: uppercase;
   font-weight: bold;
 }
+.nombreDelUsuario {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 .nivelDelEnemigo {
   font-size: medium;
   font-weight: bold;
@@ -1171,12 +1176,46 @@ button {
   bottom: 0;
   width: 100%;
   height: 120px;
+  background-color: #0a323c;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 .CasillaDeHabilidad {
-  width: 80px;
-  height: 80px;
-  cursor: no-drop;
+  width: 80%;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color: #fff;
 }
+.escucharBotonDeHabilidad {
+  width: 65px;
+  height: 65px;
+  border: none;
+}
+.escucharBotonDeHabilidad:hover {
+  opacity: .6;
+  scale: 1.05;
+  transition: all ease .3s;
+  overflow: hidden;
+}
+.CasillaDeHabilidad p {
+  font-size: small;
+}
+.CasillaDeHabilidad img {
+  width: 100%;
+  height: 100%;
+}
+.ContenedorDeHabilidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 
 @media screen and (max-width: 768px) {
   #playBground {
