@@ -917,6 +917,7 @@ function crearCasillaDeHabilidad(personaje) {
   const escucharBotonDeHabilidad = document.querySelectorAll(
     ".escucharBotonDeHabilidad"
   );
+  let vidaAnteriorDelEnemigo = 100;
 
   escucharBotonDeHabilidad.forEach((boton) => {
     boton.addEventListener("click", () => {
@@ -926,9 +927,9 @@ function crearCasillaDeHabilidad(personaje) {
       let dañoDelAtaque;
       // Considerar si la habilidad es de Escudar, Daño, Ultimate, Area.
       if (idDelBoton === "Q") {
-        console.log('Tirastes una Q');
+        console.log("Tirastes una Q");
         dañoDelAtaque = personaje.habilidades.Q.daño;
-        generarNivelModoHistoria.
+        // generarNivelModoHistoria.
       }
       if (idDelBoton === "W") {
       }
@@ -936,10 +937,19 @@ function crearCasillaDeHabilidad(personaje) {
       }
       if (idDelBoton === "R") {
       }
-      mostrarEnemigos();
+      vidaAnteriorDelEnemigo -= dañoDelAtaque;
+      if (vidaAnteriorDelEnemigo < 0) {
+        vidaAnteriorDelEnemigo = 0;
+      }
+      crearBarraDeVidaDelEnemigo.style.width = `${vidaAnteriorDelEnemigo}%`;
+      console.log("funciona");
+      actualizarVidaEnemigo();
     });
   });
 }
+// Funcion para acuatizar
+
+function actualizarVidaEnemigo() {}
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
 const estadioEnemigo = document.querySelector(".estadioEnemigo");
@@ -970,6 +980,9 @@ function mostrarEnemigos(enemigo) {
   const crearBarraDeVidaDelEnemigo = document.createElement("div");
   crearBarraDeVidaDelEnemigo.className = "barraDeVidaDelEnemigo";
   crearContenedorDeAtributosEnemigo.appendChild(crearBarraDeVidaDelEnemigo);
+  // Agregar un funcion que determine cuanto debe de bajar su vida.
+  crearBarraDeVidaDelEnemigo.style.width = `${generarNivelModoHistoria[enemigo].atributos.vida}%`;
+
   // Barra de Mana
   const crearBarraDeManaDelEnemigo = document.createElement("div");
   crearBarraDeManaDelEnemigo.className = "barraDeManaDelEnemigo";
