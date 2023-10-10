@@ -917,18 +917,20 @@ function crearCasillaDeHabilidad(personaje) {
   const escucharBotonDeHabilidad = document.querySelectorAll(
     ".escucharBotonDeHabilidad"
   );
+  let vidaAnteriorDelEnemigo = 100;
 
   escucharBotonDeHabilidad.forEach((boton) => {
     boton.addEventListener("click", () => {
       console.log("funciona Habilidad");
       const idDelBoton = boton.id; // Obtener el ID del botón que se hizo clic
       console.log("ID del botón:", idDelBoton);
-      let dañoDelAtaque;
+      let dañoDelAtaque = 0;
       // Considerar si la habilidad es de Escudar, Daño, Ultimate, Area.
       if (idDelBoton === "Q") {
-        console.log('Tirastes una Q');
+        console.log("Tirastes una Q");
         dañoDelAtaque = personaje.habilidades.Q.daño;
         console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
+        // generarNivelModoHistoria.
       }
       if (idDelBoton === "W") {
         console.log('Tirastes una Q');
@@ -942,14 +944,43 @@ function crearCasillaDeHabilidad(personaje) {
       }
       if (idDelBoton === "R") {
       }
-      mostrarEnemigos();
+      vidaAnteriorDelEnemigo -= dañoDelAtaque;
+      if (vidaAnteriorDelEnemigo < 0) {
+        vidaAnteriorDelEnemigo = 0;
+        console.log('Game Over! Juego Ganado');
+      }
+      actualizarVida(vidaAnteriorDelEnemigo);
     });
   });
+}
+// Funcion para acuatizar
+const actualizarBarraDeVidaDelEnemigo = document.querySelector(
+  ".barraDeVidaDelEnemigo"
+);
+const mostrarNivelActualDelMapa = document.querySelector(
+  ".nivelActual-modo-historia"
+);
+function actualizarVida(vidaAnteriorDelEnemigo) {
+  // Crear una barra de vida y de mana del enemigo.
+  const crearBarraDeVidaDelEnemigo = document.querySelector(
+    ".barraDeVidaDelEnemigo"
+  );
+  // Agregar un funcion que determine cuanto debe de bajar su vida.
+  crearBarraDeVidaDelEnemigo.style.width = `${vidaAnteriorDelEnemigo}%`;
+  console.log("Se le esta quitando vida al enmemigo: " + vidaAnteriorDelEnemigo);
+
+  // Barra de Mana
+  const crearBarraDeManaDelEnemigo = document.querySelector(
+    ".barraDeManaDelEnemigo"
+  );
+  crearBarraDeManaDelEnemigo.style.width = `${100}%`;
 }
 
 // Obtener el Estadio Enemigo. Para referir la posicion.
 const estadioEnemigo = document.querySelector(".estadioEnemigo");
 function mostrarEnemigos(enemigo) {
+  // A;adir el nivel al titulo.
+  mostrarNivelActualDelMapa.textContent = generarNivelModoHistoria[enemigo].nivel;
   // Crear contenedor para todo el enemigo.
   const crearContenedorDelEnemigo = document.createElement("div");
   crearContenedorDelEnemigo.className = "crearContenedorDelEnemigo";
@@ -967,26 +998,17 @@ function mostrarEnemigos(enemigo) {
   asignarNivelDeEnemigo.textContent = `Lvl. ${generarNivelModoHistoria[enemigo]["nivel del enemigo"]}`;
   crearContenedorDelEnemigo.appendChild(asignarNivelDeEnemigo);
 
-  // Crear un contenedor para los atributos y el nombre del enemigo.
-  const crearContenedorDeAtributosEnemigo = document.createElement("div");
-  crearContenedorDeAtributosEnemigo.className =
-    "crearContenedorDeAtributosEnemigo";
-  crearContenedorDelEnemigo.appendChild(crearContenedorDeAtributosEnemigo);
-  // Crear una barra de vida y de mana del enemigo.
-  const crearBarraDeVidaDelEnemigo = document.createElement("div");
-  crearBarraDeVidaDelEnemigo.className = "barraDeVidaDelEnemigo";
-  crearContenedorDeAtributosEnemigo.appendChild(crearBarraDeVidaDelEnemigo);
-  // Barra de Mana
-  const crearBarraDeManaDelEnemigo = document.createElement("div");
-  crearBarraDeManaDelEnemigo.className = "barraDeManaDelEnemigo";
-  crearContenedorDeAtributosEnemigo.appendChild(crearBarraDeManaDelEnemigo);
-
   // Crear los elementos de imagen y darle una clase.
   const crearFormaDelEnemigo = document.createElement("img");
   crearFormaDelEnemigo.className = "formaDelEnemigo";
   crearFormaDelEnemigo.src = generarNivelModoHistoria[enemigo].img;
   console.log("Se logro obtener el nivel del enemigo " + enemigo);
   crearContenedorDelEnemigo.appendChild(crearFormaDelEnemigo);
+  // Crear el stats de Vida del enemigo.
+  console.log(
+    "Pasando info de los " + generarNivelModoHistoria[enemigo].atributos.vida
+  );
+  actualizarVida(generarNivelModoHistoria[enemigo].atributos.vida);
 }
 
 let generarNivelModoHistoria = [
