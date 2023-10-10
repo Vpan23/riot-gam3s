@@ -1216,15 +1216,18 @@ button {
   flex-direction: column;
 }
 .contenedorDelNivelActualDeMazmorra{
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  position: absolute;
-  left: 0;
-  top: 0;
   color: #fff;
+  align-items: center;
+  text-align: center;
+}
+.nivelActual-modo-historia {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(207, 36, 195);
+  margin: 0 1rem;
 }
 .statsDelEnemigo {
   width: 50%;

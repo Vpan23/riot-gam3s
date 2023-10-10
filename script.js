@@ -719,11 +719,10 @@ function evaluarCampeonEnUso() {
       mostrarBatalla.style.display = "none";
       mostrarPanelDeCombate.style.display = "flex";
       startToPlay();
+    } else {
+      console.log(`no esta activo ${personaje.nombre}`);
     }
   });
-  console.log(
-    "No contienes ningun personaje activo, por favor Vuelva a Intentarlo!"
-  );
 }
 
 const goBackPanelDeBatalla = document.querySelector(".goBack-PanelDeBatalla");
@@ -929,30 +928,39 @@ function crearCasillaDeHabilidad(personaje) {
       if (idDelBoton === "Q") {
         console.log("Tirastes una Q");
         dañoDelAtaque = personaje.habilidades.Q.daño;
-        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
-        // generarNivelModoHistoria.
       }
       if (idDelBoton === "W") {
-        console.log('Tirastes una Q');
+        console.log("Tirastes una W");
         dañoDelAtaque = personaje.habilidades.Q.daño;
-        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
       }
       if (idDelBoton === "E") {
-        console.log('Tirastes una Q');
+        console.log("Tirastes una E");
         dañoDelAtaque = personaje.habilidades.Q.daño;
-        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
       }
       if (idDelBoton === "R") {
+        console.log("Tirastes una R");
       }
+
       vidaAnteriorDelEnemigo -= dañoDelAtaque;
-      if (vidaAnteriorDelEnemigo < 0) {
+      if (vidaAnteriorDelEnemigo <= 0) {
         vidaAnteriorDelEnemigo = 0;
-        console.log('Game Over! Juego Ganado');
+        console.log("Game Over! Juego Ganado");
+        mostrarResultadoDeBatallaVictoria();
       }
       actualizarVida(vidaAnteriorDelEnemigo);
     });
   });
 }
+// Funcion para Responder a los resultados del combate.
+function mostrarResultadoDeBatallaVictoria() {
+  monedas += 30;
+  monedasTextDisplay.textContent = monedas;
+  monedasTienda.textContent = monedas;
+  console.log("Has ganado 30 monedas!");
+  mostrarEstadioDeCombate.style.display = "none";
+  menuBatalla();
+}
+
 // Funcion para acuatizar
 const actualizarBarraDeVidaDelEnemigo = document.querySelector(
   ".barraDeVidaDelEnemigo"
@@ -960,27 +968,33 @@ const actualizarBarraDeVidaDelEnemigo = document.querySelector(
 const mostrarNivelActualDelMapa = document.querySelector(
   ".nivelActual-modo-historia"
 );
+const crearBarraDeManaDelEnemigo = document.querySelector(
+  ".barraDeManaDelEnemigo"
+);
 function actualizarVida(vidaAnteriorDelEnemigo) {
   // Crear una barra de vida y de mana del enemigo.
+  // Agregar un funcion que determine cuanto debe de bajar su vida.
   const crearBarraDeVidaDelEnemigo = document.querySelector(
     ".barraDeVidaDelEnemigo"
   );
-  // Agregar un funcion que determine cuanto debe de bajar su vida.
   crearBarraDeVidaDelEnemigo.style.width = `${vidaAnteriorDelEnemigo}%`;
-  console.log("Se le esta quitando vida al enmemigo: " + vidaAnteriorDelEnemigo);
+  console.log(
+    "Se le esta quitando vida al enmemigo: " + vidaAnteriorDelEnemigo
+  );
 
   // Barra de Mana
-  const crearBarraDeManaDelEnemigo = document.querySelector(
-    ".barraDeManaDelEnemigo"
-  );
+
   crearBarraDeManaDelEnemigo.style.width = `${100}%`;
 }
 
-// Obtener el Estadio Enemigo. Para referir la posicion.
 const estadioEnemigo = document.querySelector(".estadioEnemigo");
 function mostrarEnemigos(enemigo) {
-  // A;adir el nivel al titulo.
-  mostrarNivelActualDelMapa.textContent = generarNivelModoHistoria[enemigo].nivel;
+  // Obtén una referencia al contenedor de enemigos
+
+  enemigo -= 1;
+  // Añadir el nivel al título.
+  mostrarNivelActualDelMapa.textContent =
+    generarNivelModoHistoria[enemigo].nivel;
   // Crear contenedor para todo el enemigo.
   const crearContenedorDelEnemigo = document.createElement("div");
   crearContenedorDelEnemigo.className = "crearContenedorDelEnemigo";
