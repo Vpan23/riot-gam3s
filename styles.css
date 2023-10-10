@@ -1149,14 +1149,14 @@ button {
   font-weight: bold;
 }
 .barraDeVidaDelEnemigo {
-  /* width: 100%; */
-  height: 50%;
+  width: 100%;
+  height: 25%;
   background-color: red;
 }
 .barraDeManaDelEnemigo {
   background-color: blue;
   width: 100%;
-  height: 50%;
+  height: 25%;
 }
 .barraDeVidaDelUsuario {
   width: 100%;
@@ -1212,6 +1212,30 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.contenedorDelNivelActualDeMazmorra{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+}
+.statsDelEnemigo {
+  width: 50%;
+  height: 75px;
+  background-color: #3e413a;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: start;
+  align-items: start;
   flex-wrap: wrap;
   flex-direction: column;
 }
