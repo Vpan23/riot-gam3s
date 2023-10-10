@@ -928,11 +928,17 @@ function crearCasillaDeHabilidad(personaje) {
       if (idDelBoton === "Q") {
         console.log('Tirastes una Q');
         dañoDelAtaque = personaje.habilidades.Q.daño;
-        generarNivelModoHistoria.
+        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
       }
       if (idDelBoton === "W") {
+        console.log('Tirastes una Q');
+        dañoDelAtaque = personaje.habilidades.Q.daño;
+        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
       }
       if (idDelBoton === "E") {
+        console.log('Tirastes una Q');
+        dañoDelAtaque = personaje.habilidades.Q.daño;
+        console.log(`Has infligido ${dañoDelAtaque} al enemigo`);
       }
       if (idDelBoton === "R") {
       }
