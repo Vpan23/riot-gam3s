@@ -698,10 +698,12 @@ const mostrarPanelDeCombate = document.querySelector(".mostrarPanelDeCombate");
 
 buttonStartToPlay.addEventListener("click", () => {
   if (modoDeJuego === "Modo - Clasificatoria") {
-  } else {
-    console.log("no pasa");
-  }
-  if (modoDeJuego === "Modo - Historia") {
+    console.log("entraastes en Clasificatoria");
+  } else if (modoDeJuego === "Modo - Normal") {
+    console.log("entraastes en Normal");
+    //  ();
+  } else if (modoDeJuego === "Modo - Historia") {
+    console.log("entraastes en historia");
     evaluarCampeonEnUso();
   }
 });
@@ -793,6 +795,8 @@ function iniciarBatallaSegunNivel(nivelRecibido) {
 
   // Mostrar Enemigo.
   mostrarEnemigos(nivelRecibido);
+  actualizarVida(generarNivelModoHistoria[nivelRecibido].atributos.vida);
+
   nivelDelEnemigo = nivelRecibido;
   // Mostrar Personaje del Usuario.
   mostrarUsuario();
@@ -805,6 +809,10 @@ function mostrarEntrada() {
 // Obtener el Estadio del Usuario. Para referir la posicion.
 const estadioUsuario = document.querySelector(".estadioUsuario");
 function mostrarUsuario() {
+  // Limpiar el contenido anterior
+  while (estadioUsuario.firstChild) {
+    estadioUsuario.removeChild(estadioUsuario.firstChild);
+  }
   // Evaluar personaje escogido.
   personajes.forEach(function (personaje) {
     console.log(`Nombre del Personaje: ${personaje.nombre}`);
@@ -973,10 +981,10 @@ const crearBarraDeManaDelEnemigo = document.querySelector(
 );
 function actualizarVida(vidaAnteriorDelEnemigo) {
   // Crear una barra de vida y de mana del enemigo.
-  // Agregar un funcion que determine cuanto debe de bajar su vida.
   const crearBarraDeVidaDelEnemigo = document.querySelector(
     ".barraDeVidaDelEnemigo"
   );
+  // Agregar un funcion que determine cuanto debe de bajar su vida.
   crearBarraDeVidaDelEnemigo.style.width = `${vidaAnteriorDelEnemigo}%`;
   console.log(
     "Se le esta quitando vida al enmemigo: " + vidaAnteriorDelEnemigo
@@ -989,14 +997,16 @@ function actualizarVida(vidaAnteriorDelEnemigo) {
 
 const estadioEnemigo = document.querySelector(".estadioEnemigo");
 function mostrarEnemigos(enemigo) {
-  // Obtén una referencia al contenedor de enemigos
-
   enemigo -= 1;
   // Añadir el nivel al título.
+  while (estadioEnemigo.firstChild) {
+    estadioEnemigo.removeChild(estadioEnemigo.firstChild);
+  }
   mostrarNivelActualDelMapa.textContent =
     generarNivelModoHistoria[enemigo].nivel;
   // Crear contenedor para todo el enemigo.
   const crearContenedorDelEnemigo = document.createElement("div");
+
   crearContenedorDelEnemigo.className = "crearContenedorDelEnemigo";
   estadioEnemigo.appendChild(crearContenedorDelEnemigo);
 
@@ -1022,7 +1032,7 @@ function mostrarEnemigos(enemigo) {
   console.log(
     "Pasando info de los " + generarNivelModoHistoria[enemigo].atributos.vida
   );
-  actualizarVida(generarNivelModoHistoria[enemigo].atributos.vida);
+  // actualizarVida(generarNivelModoHistoria[enemigo].atributos.vida);
 }
 
 let generarNivelModoHistoria = [
@@ -1406,13 +1416,13 @@ function startToPlay() {
   console.log(`Accediendo al modo: ${modoDeJuego}`);
   // Acceder al Modo Historia.
   // Mostrar carga de pantalla
-  mostrarBusquedaDeEnemigos();
 
-  setTimeout(() => {
-    // Entrar a los niveles luego de la animacion.
-    crearPanelDeNiveles();
-  }, 3000);
-  if (modoDeJuego === "modo-historia") {
+  if (modoDeJuego === "Modo - Historia") {
+    mostrarBusquedaDeEnemigos();
+    setTimeout(() => {
+      // Entrar a los niveles luego de la animacion.
+      crearPanelDeNiveles();
+    }, 3000);
   }
   // Acceder al Modo Normal.
   if (modoDeJuego === "modo-normal") {
